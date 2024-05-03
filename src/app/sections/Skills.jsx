@@ -19,7 +19,6 @@ const Skills = () => {
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
-  console.log(scrollYProgress);
 
   const scrollProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
 

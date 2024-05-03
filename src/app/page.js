@@ -7,6 +7,7 @@ import Contact from "./sections/Contact";
 import "./globals.css";
 import ExperienceContextProvider from "@/contexts/ExperienceContextProvider";
 import SkillContextProvider from "@/contexts/SkillContextProvider";
+import ProjectContextProvider from "@/contexts/ProjectContextProvider";
 
 export default function Home() {
   return (
@@ -27,7 +28,9 @@ export default function Home() {
         </SkillContextProvider>
       </section>
       <section>
-        <Projects />
+        <ProjectContextProvider>
+          <Projects />
+        </ProjectContextProvider>
       </section>
       <section>
         <Contact />
