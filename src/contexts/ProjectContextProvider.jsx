@@ -9,7 +9,7 @@ const ProjectContextProvider = ({ children }) => {
       projectLink: "https://www.google.com",
       projectTechStack: ["React", "JavaScript", "SPFx"],
       date: "Oct-2023",
-      color: "#1a4480",
+      color: "#ce4e4e",
       projectPicture:
         "https://www.hostgator.com/blog/wp-content/uploads/2018/03/how-to-make-a-website-mobile-friendly.jpg",
       projectDescription: [
@@ -24,7 +24,7 @@ const ProjectContextProvider = ({ children }) => {
       projectLink: "https://www.google.com",
       projectTechStack: ["React", "JavaScript", "SPFx"],
       date: "Oct-2023",
-      color: "#dddddd",
+      color: "#a13d3d",
       projectPicture:
         "https://www.hostgator.com/blog/wp-content/uploads/2018/03/how-to-make-a-website-mobile-friendly.jpg",
       projectDescription: [
@@ -38,7 +38,7 @@ const ProjectContextProvider = ({ children }) => {
       projectLink: "https://www.google.com",
       projectTechStack: ["React", "JavaScript", "SPFx"],
       date: "Oct-2023",
-      color: "#b26c78",
+      color: "#823131",
       projectPicture:
         "https://www.hostgator.com/blog/wp-content/uploads/2018/03/how-to-make-a-website-mobile-friendly.jpg",
       projectDescription: [
@@ -52,7 +52,7 @@ const ProjectContextProvider = ({ children }) => {
       projectLink: "https://www.google.com",
       projectTechStack: ["React", "JavaScript", "SPFx"],
       date: "Oct-2023",
-      color: "#f794a5",
+      color: "#682828",
       projectPicture:
         "https://www.hostgator.com/blog/wp-content/uploads/2018/03/how-to-make-a-website-mobile-friendly.jpg",
       projectDescription: [
@@ -66,7 +66,7 @@ const ProjectContextProvider = ({ children }) => {
       projectLink: "https://www.google.com",
       projectTechStack: ["React", "JavaScript", "SPFx"],
       date: "Oct-2023",
-      color: "#b3d4cf",
+      color: "#481c1c",
       projectPicture:
         "https://www.hostgator.com/blog/wp-content/uploads/2018/03/how-to-make-a-website-mobile-friendly.jpg",
       projectDescription: [

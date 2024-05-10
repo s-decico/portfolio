@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useContext } from "react";
 import { motion, useTransform, useScroll } from "framer-motion";
-import "../globals.css";
+import "../globals.scss";
 import ExperienceContext from "@/contexts/ExperienceContext";
 import ExperienceCard from "../components/ExperienceCard";
 import HorizontalScrollCarousel from "./Scroll";

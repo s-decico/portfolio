@@ -11,7 +11,7 @@ const Projects = () => {
     offset: ["start start", "end end"],
   });
   const ProjectObj = useContext(ProjectContext);
-  console.log("project:", ProjectObj);
+
   return (
     <>
       <div

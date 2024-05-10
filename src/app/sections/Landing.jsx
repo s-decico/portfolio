@@ -1,6 +1,6 @@
 import React from "react";
 import TopNavbar from "../components/TopNavbar";
-import "../globals.css";
+import "../globals.scss";
 // import dp from "../images";
 // import dpImage from "../../images/dp.jpg";
 

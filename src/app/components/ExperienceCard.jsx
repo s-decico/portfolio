@@ -1,5 +1,5 @@
 import React from "react";
-import "../globals.css";
+import "../globals.scss";
 
 const ExperienceCard = ({ experience }, key) => {
   const { companyname, designation, skills, from, to, companylogo, details } =
@@ -20,35 +20,45 @@ const ExperienceCard = ({ experience }, key) => {
   return (
     <>
       <div
-        className="experience-card relative bg-[#ce4e4e] w-[80vw] h-[90%] p-10 flex flex-col gap-2 text-white overflow-y-hidden"
+        className=" relative bg-[#5d5959] w-[80vw] h-[90%] p-10 flex flex-col gap-8 text-white overflow-y-hidden"
         key={key}
+        id={key}
       >
-        <div className="experience-logo flex justify-between items-center">
+        <div className="experience-logo flex justify-between items-center h-36 p-4 bg-[#00000036] rounded-lg border-2 border-[#ce4e4e]">
           <div className="company-name-designation flex flex-col justify-around">
             <div className="company-name text-5xl">{companyname}</div>
             <div className="exp-card-designation text-xl pl-[2px] pt-2">
               {designation}
+            </div>
+            <div className="exp-dates ">
+              {fromMonth}/{fromYear} -{" "}
+              {to == "Present" ? to : `${toMonth} / ${toYear}`}
             </div>
           </div>
           <div className="company-logo w-28 h-28 object-fill  flex flex-col items-center justify-center">
             <img src={companylogo} alt="" />
           </div>
         </div>
-        <div className="experience-details flex flex-col gap-2 ">
-          <div className="exp-dates ">
-            {fromMonth}/{fromYear} -{" "}
-            {to == "Present" ? to : `${toMonth} / ${toYear}`}
-          </div>
-
-          <div className="exp-card-skills-container flex gap-4 text-2xl ">
-            {skills.map((skill) => {
-              return <div className="exp-card-skills">{skill}</div>;
+        <div className="experience-details flex flex-col gap-2">
+          <div className="exp-card-skills-container flex gap-2 text-2xl ">
+            {skills.map((skill, index) => {
+              return (
+                <div
+                  className="exp-card-skills p-2 border-2 border-[#ce4e4e] bg-[#00000036] rounded-lg"
+                  key={index}
+                >
+                  {skill}
+                </div>
+              );
             })}
           </div>
-          <div className="exp-card-details flex flex-col gap-2">
-            {details.map((detail) => {
+          <div className="exp-card-details flex flex-col gap-2 p-2 border-2 border-[#ce4e4e] bg-[#00000036] rounded-lg">
+            {details.map((detail, index) => {
               return (
-                <div className="exp-card-details flex gap-2 text-white">
+                <div
+                  className="exp-card-details flex gap-2 text-white"
+                  key={index}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512"

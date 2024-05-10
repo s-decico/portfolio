@@ -2,11 +2,18 @@
 import React, { useRef, useContext } from "react";
 import SkillContext from "@/contexts/SkillContext";
 import SkillCard from "../components/SkillCard";
-import { motion, useTransform, useScroll } from "framer-motion";
+import {
+  motion,
+  useTransform,
+  useScroll,
+  easeInOut,
+  easeIn,
+} from "framer-motion";
 
 const staggeredAnimationVariant = {
   animate: ({ scrollProgress, index }) => ({
-    scale: 1,
+    // scale: 1,
+    x: "0px",
     opacity: 1,
     transition: { delay: 0.1 * index },
   }),
@@ -26,10 +33,12 @@ const Skills = () => {
     <>
       <div
         ref={targetRef}
-        className="skills-container relative w-full bg-[#e68b8b] p-20"
+        className="skills-container relative w-full bg-[#323232] p-20"
       >
-        <div className="skill-heading">Skills</div>
-        <div className="skill-card-container flex flex-wrap gap-4 items-center justify-center sticky top-0 bg-green-300 py-4">
+        <div className="skill-heading text-5xl text-white mb-20 flex items-center justify-center w-full ">
+          Skills
+        </div>
+        <div className="skill-card-container flex flex-wrap gap-4 items-center justify-center sticky top-0  py-4">
           {skillObj &&
             skillObj.map((skill, index) => {
               return (
@@ -37,14 +46,11 @@ const Skills = () => {
                   className="skill-card-wrapper"
                   custom={{ scrollProgress, index }}
                   variants={staggeredAnimationVariant}
-                  initial={{ scale: 0, opacity: 0 }}
+                  initial={{ opacity: 0, x: "-20px" }}
                   whileInView="animate"
                   viewport={{ once: true }}
-                  // animate={{
-                  //   scale: 1,
-                  //   opacity: 1,
-                  //   transition: { delay: 0.5 * index },
-                  // }}
+                  transition={{ ease: easeIn }}
+                  key={index}
                 >
                   <SkillCard skill={skill} key={index} />
                 </motion.div>
