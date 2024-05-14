@@ -15,13 +15,41 @@ import React, { useState, useEffect } from "react";
 
 export default function Home() {
   const [showSideNavbar, setShowSideNavbar] = useState(false);
+  const [activeSectionId, setActiveSectionId] = useState("");
   useEffect(() => {
     const handleScroll = () => {
       const experienceSection = document.getElementById("experience");
-      const scrollTop = window.scrollY;
-      const experienceSectionTop = experienceSection.offsetTop;
+      const skillsSection = document.getElementById("skills");
+      const projectsSection = document.getElementById("projects");
+      const contactSection = document.getElementById("contact");
 
-      setShowSideNavbar(scrollTop >= experienceSectionTop - 100);
+      const verticalScroll = window.scrollY;
+      const experienceSectionTop = experienceSection.offsetTop;
+      const skillsSectionTop = skillsSection.offsetTop;
+      const projectsSectionTop = projectsSection.offsetTop;
+      const contactSectionTop = contactSection.offsetTop;
+
+      if (verticalScroll < experienceSectionTop - 50)
+        setActiveSectionId("home");
+      else if (
+        verticalScroll > experienceSectionTop - 100 &&
+        verticalScroll < skillsSectionTop - 100
+      )
+        setActiveSectionId("experience");
+      else if (
+        verticalScroll > skillsSectionTop - 100 &&
+        verticalScroll < projectsSectionTop - 100
+      )
+        setActiveSectionId("skills");
+      else if (
+        verticalScroll > projectsSectionTop - 100 &&
+        verticalScroll < contactSectionTop - 200
+      )
+        setActiveSectionId("projects");
+      else if (verticalScroll >= contactSectionTop - 200)
+        setActiveSectionId("contact");
+
+      setShowSideNavbar(verticalScroll >= experienceSectionTop - 300);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -38,7 +66,10 @@ export default function Home() {
         <div className="side-nav-sections">
           {showSideNavbar && (
             <div className="side-nav z-10 fixed left-0 top-[200px] bg-[#00000065] w-max max-w-28 h-max p-1">
-              <SideNavbar showSideNavbar={showSideNavbar} />
+              <SideNavbar
+                showSideNavbar={showSideNavbar}
+                activeSectionId={activeSectionId}
+              />
             </div>
           )}
           <section id="experience">

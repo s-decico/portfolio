@@ -17,7 +17,7 @@ const Landing = () => {
               Idea to Online Impact
             </div>
             <div className="hero-text-bottom overflow-hidden text-[#323232]">
-              Let's code your way online
+              Let`&#39;`s code your way online
             </div>
           </div>
           <div className="hero-avatar w-72">

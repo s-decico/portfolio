@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer"; // Install this package
 
-const SideNavbar = ({ showSideNavbar }) => {
+const SideNavbar = ({ showSideNavbar, activeSectionId }) => {
   const navbarMenus = [
     { label: "Home", id: "home", navid: "navHome" },
     { label: "Experience", id: "experience", navid: "navExperience" },
@@ -102,12 +102,14 @@ const SideNavbar = ({ showSideNavbar }) => {
         className="sidenav-container flex flex-col items-center justify-center gap-2 w-20"
         variants={variants}
         animate={showSideNavbar ? "visible" : "hidden"}
-        transition={{ duration: 0.3 }} // Adjust animation duration as needed
+        transition={{ duration: 0.3 }}
       >
         {navbarMenus.map((navitem, index) => {
           return (
             <div
-              className="flex flex-col items-center justify-center w-full cursor-pointer p-2"
+              className={`flex flex-col items-center justify-center w-full cursor-pointer p-2 ${
+                activeSectionId === navitem.id ? "bg-[#ce4e4e]" : "" // Adjust the class for active section highlighting
+              }`}
               id={navitem.navid}
               key={index}
               onClick={(event) => scrollToSection(navitem.id, event)}
