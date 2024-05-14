@@ -4,7 +4,7 @@ import ContactContext from "@/contexts/ContactContext";
 
 const Contact = () => {
   const contactObj = useContext(ContactContext);
-  console.log("contact:", contactObj);
+  // console.log("contact:", contactObj);
   return (
     <>
       <div className="contact-container flex flex-col h-dvh bg-[#323232] text-white">
