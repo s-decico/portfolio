@@ -56,9 +56,9 @@ const ProjectCard = ({
               })}
             </div>
             <div className="project-description list-style-type: none">
-              {projectDescription.map((x) => {
+              {projectDescription.map((x, i) => {
                 if (x) {
-                  return <li className="">{x}</li>;
+                  return <li key={i}>{x}</li>;
                 }
               })}
             </div>
