@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
-/* Primary: ce4e4e
+/* Primary: 6cb545
 Secondary: 323232 
+
+green:[#6cb545]
 Font:Felix titling
 */
 * {
@@ -15,9 +17,9 @@ Font:Felix titling
 }
 
 .landing-container {
-  background: linear-gradient(to bottom, #323232 50%, #ce4e4e 50%);
+  
+  background: linear-gradient(to bottom, #323232 50%, #6cb545 50%);
 }
-
 
 // .back-image{
 //   position: absolute;
@@ -33,7 +35,6 @@ Font:Felix titling
 
 .contact-form-container input:focus {
   outline: none;
-  
 }
 
 .contact-form-container textarea:focus {
@@ -45,6 +46,7 @@ Font:Felix titling
   padding-left: 2px;
   background: none;
   color: inherit;
+  
 }
 .contact-form-container textarea {
   max-height: 128px;

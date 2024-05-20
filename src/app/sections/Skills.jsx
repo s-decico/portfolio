@@ -41,20 +41,22 @@ const Skills = () => {
         <div className="skill-card-container flex flex-wrap gap-4 items-center justify-center sticky top-0  py-4">
           {skillObj &&
             skillObj.map((skill, index) => {
-              return (
-                <motion.div
-                  className="skill-card-wrapper"
-                  custom={{ scrollProgress, index }}
-                  variants={staggeredAnimationVariant}
-                  initial={{ opacity: 0, x: "-20px" }}
-                  whileInView="animate"
-                  viewport={{ once: true }}
-                  transition={{ ease: easeIn }}
-                  key={index}
-                >
-                  <SkillCard skill={skill} key={index} />
-                </motion.div>
-              );
+              if (skill) {
+                return (
+                  <motion.div
+                    className="skill-card-wrapper"
+                    custom={{ scrollProgress, index }}
+                    variants={staggeredAnimationVariant}
+                    initial={{ opacity: 0, x: "-20px" }}
+                    whileInView="animate"
+                    viewport={{ once: true }}
+                    transition={{ ease: easeIn }}
+                    key={index}
+                  >
+                    <SkillCard skill={skill} key={index} />
+                  </motion.div>
+                );
+              }
             })}
         </div>
       </div>

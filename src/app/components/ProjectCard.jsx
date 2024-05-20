@@ -43,22 +43,37 @@ const ProjectCard = ({
           className="project-card relative w-[80vw] h-[70vh] bg-red-900 flex items-center justify-center px-10 gap-5 origin-top shadow-lg"
         >
           <div className="project-details overflow-hidden  w-[60%] h-[80%] flex flex-col items-start gap-2">
-            <div className="project-name text-4xl">{projectName}</div>
+            <div className="project-name text-4xl pb-10">{projectName}</div>
             <div className="project-tech flex gap-2">
               {projectTechStack.map((tech, index) => {
-                return <li key={index}>{tech}</li>;
+                if (tech) {
+                  return (
+                    <div className="bg-[#00000030] p-1 rounded-sm" key={index}>
+                      {tech}
+                    </div>
+                  );
+                }
               })}
             </div>
-            <div className="project-description">{projectDescription}</div>
+            <div className="project-description list-style-type: none">
+              {projectDescription.map((x) => {
+                if (x) {
+                  return <li className="">{x}</li>;
+                }
+              })}
+            </div>
             <button
               onClick={() => {
-                window.open(projectLink, "_blank", "noopener noreferrer");
+                if (projectLink) {
+                  window.open(projectLink, "_blank", "noopener noreferrer");
+                }
               }}
+              className="bg-black p-2"
             >
               Go to Project
             </button>
           </div>
-          <div className="project-image relative w-[40%] h-full  overflow-hidden flex justify-center items-center">
+          <div className="project-image relative w-[40%] h-full  overflow-hidden flex justify-center items-center object-cover">
             <motion.div className="w-full" style={{ scale: imageScale }}>
               <img
                 src={projectPicture}

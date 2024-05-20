@@ -30,7 +30,9 @@ const Experience = () => {
             style={{ x }}
           >
             {ExperienceObj.map((experience, index) => {
-              return <ExperienceCard experience={experience} key={index} />;
+              if (experience) {
+                return <ExperienceCard experience={experience} key={index} />;
+              }
             })}
           </motion.div>
         </div>

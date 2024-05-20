@@ -14,26 +14,7 @@ const SkillContextProvider = ({ children }) => {
       logoURL:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
     },
-    {
-      skillName: "JavaScript",
-      logoURL:
-        "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
-    },
-    {
-      skillName: "TypeScript",
-      logoURL:
-        "https://static-00.iconduck.com/assets.00/typescript-plain-icon-256x256-ypojgpyj.png",
-    },
-    {
-      skillName: "HTML",
-      logoURL:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/800px-HTML5_Badge.svg.png",
-    },
-    {
-      skillName: "CSS",
-      logoURL:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/768px-CSS3_logo.svg.png",
-    },
+
     {
       skillName: "NodeJS",
       logoURL:
@@ -58,6 +39,36 @@ const SkillContextProvider = ({ children }) => {
       skillName: "OAuth",
       logoURL:
         "https://static-00.iconduck.com/assets.00/oauth-icon-2043x2048-72bpfcq4.png",
+    },
+    {
+      skillName: "HTML",
+      logoURL:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/800px-HTML5_Badge.svg.png",
+    },
+    {
+      skillName: "CSS",
+      logoURL:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/768px-CSS3_logo.svg.png",
+    },
+    {
+      skillName: "Tailwind CSS",
+      logoURL:
+        "https://static-00.iconduck.com/assets.00/tailwind-css-icon-2048x1229-u8dzt4uh.png",
+    },
+    // {
+    //   skillName: "Framer Motion",
+    //   logoURL:
+    //     "https://seeklogo.com/images/F/framer-motion-logo-DA1E33CAA1-seeklogo.com.png",
+    // },
+    {
+      skillName: "TypeScript",
+      logoURL:
+        "https://static-00.iconduck.com/assets.00/typescript-plain-icon-256x256-ypojgpyj.png",
+    },
+    {
+      skillName: "JavaScript",
+      logoURL:
+        "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
     },
     {
       skillName: "C++",

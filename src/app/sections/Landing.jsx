@@ -1,6 +1,7 @@
 import React from "react";
 import TopNavbar from "../components/TopNavbar";
 import "../globals.scss";
+import Image from "next/image";
 // import dp from "../images";
 // import dpImage from "../../images/dp.jpg";
 
@@ -13,17 +14,20 @@ const Landing = () => {
         </nav>
         <div className="landing-hero flex justify-between items-center w-full h-80 px-56 overflow-hidden absolute top-1/2 -translate-y-40">
           <div className="hero-text flex flex-col text-5xl">
-            <div className="hero-text-top overflow-hidden p-0 text-[#ce4e4e]">
+            <div className="hero-text-top overflow-hidden p-0 text-[#6cb545]">
               Idea to Online Impact
             </div>
             <div className="hero-text-bottom overflow-hidden text-[#323232]">
               Lets code your way online
             </div>
           </div>
-          <div className="hero-avatar w-72">
-            <img
-              src={"https://avatar.iran.liara.run/public/boy?username=Ash"}
-              alt="DP"
+          <div className="hero-avatar">
+            <Image
+              src="/dp.jpg"
+              alt="Display pic"
+              width={280}
+              height={280}
+              className="rounded-full"
             />
           </div>
         </div>

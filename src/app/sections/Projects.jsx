@@ -16,21 +16,23 @@ const Projects = () => {
     <>
       <div
         ref={container}
-        className="projects-container relative w-full h-[500dvh] bg-[#323232] text-white flex flex-col items-center justify-center gap-24 py-32"
+        className="projects-container relative w-full h-[400dvh] bg-[#323232] text-white flex flex-col items-center justify-center gap-24 py-32"
       >
         {ProjectObj.map((project, index) => {
           const targetScale = 1 - (ProjectObj.length - index) * 0.05;
-          return (
-            <ProjectCard
-              key={index}
-              i={index}
-              progress={scrollYProgress}
-              range={[index * 0.25, 1]}
-              targetScale={targetScale}
-              color={project.color}
-              {...project}
-            />
-          );
+          if (project) {
+            return (
+              <ProjectCard
+                key={index}
+                i={index}
+                progress={scrollYProgress}
+                range={[index * 0.25, 1]}
+                targetScale={targetScale}
+                color={project.color}
+                {...project}
+              />
+            );
+          }
         })}
       </div>
     </>

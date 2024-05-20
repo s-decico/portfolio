@@ -24,16 +24,18 @@ const TopNavbar = () => {
     <>
       <div className="navbar-menus flex justify-evenly items-center w-1/2 h-full ">
         {navbarMenus.map((item, index) => {
-          return (
-            <div
-              className="navbar-item box-border p-3 text-white text-lg transition ease-in-out delay-50 hover:text-[#ce4e4e] hover:cursor-pointer hover:border-b-2 border-[#ce4e4e] origin-center  focus:text-[#993a3a] "
-              id={item.navid}
-              key={index}
-              onClick={(event) => scrollToSection(item.id, event)}
-            >
-              {item.label}
-            </div>
-          );
+          if (item) {
+            return (
+              <div
+                className="navbar-item box-border p-3 text-white text-lg transition ease-in-out delay-50 hover:text-[#6cb545] hover:cursor-pointer hover:border-b-2 border-[#6cb545] origin-center  focus:text-[#993a3a] "
+                id={item.navid}
+                key={index}
+                onClick={(event) => scrollToSection(item.id, event)}
+              >
+                {item.label}
+              </div>
+            );
+          }
         })}
       </div>
     </>

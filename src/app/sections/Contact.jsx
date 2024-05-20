@@ -86,7 +86,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <div className=" footer w-full h-40 bg-[#ce4e4e]">
+        <div className=" footer w-full h-40 bg-[#6cb545]">
           Made by Syamantak Sarkar
         </div>
       </div>

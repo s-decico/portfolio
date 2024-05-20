@@ -105,23 +105,25 @@ const SideNavbar = ({ showSideNavbar, activeSectionId }) => {
         transition={{ duration: 0.3 }}
       >
         {navbarMenus.map((navitem, index) => {
-          return (
-            <div
-              className={`flex flex-col items-center justify-center w-full cursor-pointer p-2 ${
-                activeSectionId === navitem.id ? "bg-[#ce4e4e]" : "" // Adjust the class for active section highlighting
-              }`}
-              id={navitem.navid}
-              key={index}
-              onClick={(event) => scrollToSection(navitem.id, event)}
-            >
-              <div className="sidenav-icon hover:scale-110">
-                {icons[navitem.id]}
+          if (navitem) {
+            return (
+              <div
+                className={`flex flex-col items-center justify-center w-full cursor-pointer p-2 ${
+                  activeSectionId === navitem.id ? "bg-[#6cb545]" : "" // Adjust the class for active section highlighting
+                }`}
+                id={navitem.navid}
+                key={index}
+                onClick={(event) => scrollToSection(navitem.id, event)}
+              >
+                <div className="sidenav-icon hover:scale-110">
+                  {icons[navitem.id]}
+                </div>
+                <div className="sidenav-icon-name text-xs text-white">
+                  {navitem.label}
+                </div>
               </div>
-              <div className="sidenav-icon-name text-xs text-white">
-                {navitem.label}
-              </div>
-            </div>
-          );
+            );
+          }
         })}
       </motion.div>
     </>
