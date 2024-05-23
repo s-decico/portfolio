@@ -108,7 +108,7 @@ const SideNavbar = ({ showSideNavbar, activeSectionId }) => {
           if (navitem) {
             return (
               <div
-                className={`flex flex-col items-center justify-center w-full cursor-pointer p-2 ${
+                className={`flex flex-col items-center justify-center w-full hover:cursor-pointer p-2 ${
                   activeSectionId === navitem.id ? "bg-[#6cb545]" : "" // Adjust the class for active section highlighting
                 }`}
                 id={navitem.navid}

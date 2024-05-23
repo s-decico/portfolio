@@ -15,6 +15,10 @@ const ContactContextProvider = ({ children }) => {
         url: "https://www.instagram.com/thisisrkr",
         color: "#E1306C",
       },
+      website: {
+        url: "https://syamantaksarkar.vercel.app",
+        color: "#6cb545",
+      },
     },
   });
 

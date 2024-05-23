@@ -6,6 +6,7 @@ const ProjectContextProvider = ({ children }) => {
   const [Project, setProject] = useState([
     {
       projectName: "Resumate",
+      projectLinkFlag: true,
       projectLink: "https://resumatebys.vercel.app/",
       projectTechStack: [
         "React",
@@ -17,24 +18,23 @@ const ProjectContextProvider = ({ children }) => {
         "Bcrypt",
       ],
       date: "Oct-2023",
-      color: "#417326",
-      projectPicture:
-        "https://www.hostgator.com/blog/wp-content/uploads/2018/03/how-to-make-a-website-mobile-friendly.jpg",
+      color: "#4e7b36",
+      projectPicture: "/resumate_proj.jpg",
       projectDescription: [
         "Full stack responsive resume creation website",
         "Implemented user authentication with JWT and password encryption using bcrypt",
-        "Built RESTful APIs with Node.js and Express.js to handle operations for user data and resumes",
-        "Integrated MongoDB for efficient storage and retrieval of user information and resumes",
+        "Built RESTful APIs with Express.js to handle operations for user data and resumes",
+        "Used MongoDB for efficient storage and retrieval of user information and resumes",
       ],
     },
     {
       projectName: "Portfolio Website",
+      projectLinkFlag: true,
       projectLink: "https://syamantaksarkar.vercel.app/",
       projectTechStack: ["NextJS", "Tailwind CSS", "Context API"],
       date: "Oct-2023",
-      color: "#528636",
-      projectPicture:
-        "https://www.hostgator.com/blog/wp-content/uploads/2018/03/how-to-make-a-website-mobile-friendly.jpg",
+      color: "#5e8e45",
+      projectPicture: "/portfolio_proj.jpg",
       projectDescription: [
         "A portfolio website designed to showcase all my work",
         "Used NextJS for Server Side Rendering",
@@ -43,29 +43,30 @@ const ProjectContextProvider = ({ children }) => {
     },
     {
       projectName: "Weather App",
+      projectLinkFlag: true,
       projectLink: "https://s-decico.github.io/WeatherApp/",
       projectTechStack: ["HTML", "CSS", "JavaSxript", "OpenWeatherMap API"],
       date: "Oct-2023",
-      color: "#639945",
-      projectPicture:
-        "https://www.hostgator.com/blog/wp-content/uploads/2018/03/how-to-make-a-website-mobile-friendly.jpg",
+      color: "#6d9e53",
+      projectPicture: "/weather_proj.jpg",
       projectDescription: [
         "A responsive weather website",
         "Uses OpenWeatherMap API to fetch current data based on location",
       ],
     },
     {
-      projectName: "Patient Management Dashboard",
+      projectName: "Patient Management Dashboard UI",
+      projectLinkFlag: false,
       projectLink: "",
       projectTechStack: ["React", "Material UI"],
       date: "Oct-2023",
-      color: "#79b15b",
-      projectPicture:
-        "https://www.hostgator.com/blog/wp-content/uploads/2018/03/how-to-make-a-website-mobile-friendly.jpg",
+      color: "#7daf63",
+      projectPicture: "/patient_proj.jpg",
+
       projectDescription: [
-        "Lorem ipsum dolor sit amet consectetur  molestias",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Id perferendis harum illum error.",
-        "Ratione, nulla. Totam iste neque inventore. Eligendi omnis corporis tempore est in voluptatem obcaecati. Fuga, laborum iusto.",
+        "Designed dashboard UI based on design given by UI team",
+        "Used reusable component for faster loading",
+        "Used Context API for state management and seamless data sharing among components",
       ],
     },
   ]);

@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import "../globals.scss";
 import { list } from "postcss";
+import Image from "next/image";
 
 const ProjectCard = ({
   i,
@@ -11,6 +12,7 @@ const ProjectCard = ({
   range,
   targetScale,
   projectName,
+  projectLinkFlag,
   projectLink,
   projectTechStack,
   date,
@@ -62,16 +64,18 @@ const ProjectCard = ({
                 }
               })}
             </div>
-            <button
-              onClick={() => {
-                if (projectLink) {
-                  window.open(projectLink, "_blank", "noopener noreferrer");
-                }
-              }}
-              className="bg-black p-2"
-            >
-              Go to Project
-            </button>
+            {projectLinkFlag && (
+              <button
+                onClick={() => {
+                  if (projectLink) {
+                    window.open(projectLink, "_blank", "noopener noreferrer");
+                  }
+                }}
+                className="bg-black ml-2 p-2 hover:scale-105 transition-all delay-50 ease-out"
+              >
+                Go to Project
+              </button>
+            )}
           </div>
           <div className="project-image relative w-[40%] h-full  overflow-hidden flex justify-center items-center object-cover">
             <motion.div className="w-full" style={{ scale: imageScale }}>
