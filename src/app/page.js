@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Landing from "./sections/Landing";
 import Experience from "./sections/Experience";
+import ExperienceMobile from "./components/ExperienceMobile";
 import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
@@ -16,6 +17,20 @@ import React, { useState, useEffect } from "react";
 export default function Home() {
   const [showSideNavbar, setShowSideNavbar] = useState(false);
   const [activeSectionId, setActiveSectionId] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 550); // Adjust the width as per your requirement
+    };
+
+    handleResize(); // Check on initial load
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const experienceSection = document.getElementById("experience");
@@ -49,23 +64,29 @@ export default function Home() {
       else if (verticalScroll >= contactSectionTop - 200)
         setActiveSectionId("contact");
 
-      setShowSideNavbar(verticalScroll >= experienceSectionTop - 300);
+      if (isMobile) {
+        setShowSideNavbar(true);
+      } else {
+        setShowSideNavbar(verticalScroll >= experienceSectionTop - 300);
+      }
     };
 
+    handleScroll(); // Check on initial load
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isMobile]);
+
   return (
     <>
-      <div className="main-container relative">
+      <div className="main-container relative w-full min-w-[360px]">
         <section id="home">
           <Landing />
         </section>
-        <div className="side-nav-sections">
+        <div className="side-nav-sections ">
           {showSideNavbar && (
-            <div className="side-nav z-10 fixed left-0 top-[200px] bg-[#00000065] w-max max-w-28 h-max p-1">
+            <div className="side-nav z-10 fixed left-0 top-[200px] bg-[#00000065] w-max max-w-28 h-max p-1 backdrop-blur-md">
               <SideNavbar
                 showSideNavbar={showSideNavbar}
                 activeSectionId={activeSectionId}
@@ -74,7 +95,7 @@ export default function Home() {
           )}
           <section id="experience">
             <ExperienceContextProvider>
-              <Experience />
+              {isMobile ? <ExperienceMobile /> : <Experience />}
             </ExperienceContextProvider>
           </section>
 

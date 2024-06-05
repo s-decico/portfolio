@@ -21,7 +21,7 @@ const Contact = () => {
           <div className="contact-info w-1/2 h-full flex flex-col gap-6 justify-center items-end">
             <div className="contact-hero-text text-2xl font-thin">
               <span className="text-[#6cb545] font-medium ">Lets connect!</span>{" "}
-              below are my handles
+              Below are my handles
             </div>
             <div className="direct-contacts flex gap-4">
               <a
@@ -112,19 +112,19 @@ const Contact = () => {
             <input
               type="text"
               id="name"
-              className="h-12 w-[70%] bg-transparent border-2 border-grey-500"
+              className="form-input h-12 w-[70%] bg-transparent border-2 border-grey-500"
               placeholder="Name"
             />
             <input
               type="text"
               id="email"
-              className="h-12 w-[70%] bg-transparent border-2 border-grey-500"
+              className="form-input h-12 w-[70%] bg-transparent border-2 border-grey-500"
               placeholder="Email"
             />
             <textarea
               type="text"
               id="description"
-              className="h-32 w-[70%] bg-transparent border-2 border-grey-500"
+              className="form-input h-32 w-[70%] bg-transparent border-2 border-grey-500"
               placeholder="Description..."
             />
             <button

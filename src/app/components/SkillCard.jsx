@@ -6,12 +6,12 @@ const SkillCard = ({ skill }, key) => {
   const { skillName, logoURL } = skill;
   if (skill) {
     return (
-      <div className=" w-40 h-40 flex flex-col border-2 border-[#6cb545] hover:scale-110 transition-all delay-50 ease-out">
+      <div className="skill-box w-40 h-40 flex flex-col border-2 border-[#6cb545] hover:scale-110 transition-all delay-50 ease-out">
         <div className="skill-logo h-28  flex justify-center items-center">
           <img
             src={logoURL}
             alt=""
-            className="h-24"
+            className="skill-img h-24"
             style={{ fill: "white" }}
           />
         </div>

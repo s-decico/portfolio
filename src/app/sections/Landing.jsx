@@ -2,26 +2,50 @@ import React from "react";
 import TopNavbar from "../components/TopNavbar";
 import "../globals.scss";
 import Image from "next/image";
-// import dp from "../images";
-// import dpImage from "../../images/dp.jpg";
+import { ReactTyped } from "react-typed";
+import { TypeAnimation } from "react-type-animation";
 
 const Landing = () => {
   return (
     <>
-      <div className="landing-container w-full h-dvh relative">
-        <nav className="navbar-container w-full h-20 flex justify-center">
+      <div className="landing-container w-full h-dvh relative flex flex-col justify-center items-center">
+        <nav className="navbar-container absolute top-0 w-full h-20 flex justify-center">
           <TopNavbar />
         </nav>
-        <div className="landing-hero flex justify-between items-center w-full h-80 px-56 overflow-hidden absolute top-1/2 -translate-y-40">
-          <div className="hero-text flex flex-col text-5xl">
-            <div className="hero-text-top overflow-hidden p-0 text-[#6cb545]">
+        <div className="landing-hero flex justify-between items-center w-full h-80 px-[10%] overflow-hidden absolute top-1/2 -translate-y-40">
+          <div className="hero-text flex flex-col text-5xl ">
+            {/* <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] min-h-14 ">
               Idea to Online Impact
+            </div> */}
+            <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] min-h-14">
+              {/* <ReactTyped
+                startWhenVisible
+                strings={["Hi! I'm Syamatak", "I'm a full stack developer"]}
+                typeSpeed={50}
+                backSpeed={50}
+                className="hero-text-top overflow-hidden p-0 text-[#6cb545] min-h-14"
+              /> */}
+
+              <TypeAnimation
+                sequence={[
+                  // Same substring at the start will only be typed out once, initially
+                  "Hi! I am Syamatak",
+                  1000, // wait 1s before replacing "Mice" with "Hamsters"
+                  "Hi! I am a full stack developer",
+                  1000,
+                ]}
+                wrapper="div"
+                speed={50}
+                style={{ fontSize: "1em", display: "inline-block" }}
+                repeat={Infinity}
+              />
             </div>
-            <div className="hero-text-bottom overflow-hidden text-[#323232]">
+
+            <div className="hero-text-bottom overflow-hidden text-[#323232] min-h-14 ">
               Lets code your way online
             </div>
           </div>
-          <div className="hero-avatar">
+          <div className="hero-avatar ">
             <Image
               src="/dp.jpg"
               alt="Display pic"

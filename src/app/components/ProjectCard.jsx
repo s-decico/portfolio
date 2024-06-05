@@ -42,11 +42,11 @@ const ProjectCard = ({
             // opacity: opacity,
             top: `calc(${i * 25}px)`,
           }}
-          className="project-card relative w-[80vw] h-[70vh] bg-red-900 flex items-center justify-center px-10 gap-5 origin-top shadow-lg"
+          className="project-card relative w-[80vw] h-[70vh]  flex items-center justify-center px-10 gap-5 origin-top shadow-lg"
         >
           <div className="project-details overflow-hidden  w-[60%] h-[80%] flex flex-col items-start gap-2">
             <div className="project-name text-4xl pb-10">{projectName}</div>
-            <div className="project-tech flex gap-2">
+            <div className="project-tech flex gap-2 flex-wrap">
               {projectTechStack.map((tech, index) => {
                 if (tech) {
                   return (
@@ -71,18 +71,18 @@ const ProjectCard = ({
                     window.open(projectLink, "_blank", "noopener noreferrer");
                   }
                 }}
-                className="bg-black ml-2 p-2 hover:scale-105 transition-all delay-50 ease-out"
+                className="project-button bg-black ml-2 p-2 hover:scale-105 transition-all delay-50 ease-out"
               >
                 Go to Project
               </button>
             )}
           </div>
-          <div className="project-image relative w-[40%] h-full  overflow-hidden flex justify-center items-center object-cover">
+          <div className="project-image relative w-[40%] h-full overflow-hidden flex justify-center items-center object-cover">
             <motion.div className="w-full" style={{ scale: imageScale }}>
               <img
                 src={projectPicture}
                 alt=""
-                className="object-cover w-full h-full"
+                className=" prj-img object-cover w-full h-full"
               />
             </motion.div>
           </div>
