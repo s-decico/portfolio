@@ -4,7 +4,7 @@ import "../globals.scss";
 const ExperienceCard = ({ experience }, key) => {
   const { companyname, designation, skills, from, to, companylogo, details } =
     experience;
-
+  const { skillname, logo } = skills;
   let parsedFromDate = new Date(from);
   let fromMonth = parsedFromDate.getMonth() + 1;
   let fromYear = parsedFromDate.getFullYear();
@@ -52,7 +52,7 @@ const ExperienceCard = ({ experience }, key) => {
                     className="exp-card-skills p-2 border-2 border-[#6cb545] bg-[#00000036] rounded-lg"
                     key={index}
                   >
-                    {skill}
+                    {skill.skillname}
                   </div>
                 );
               }

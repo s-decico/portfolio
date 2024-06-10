@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import React, { useEffect, useState, useContext } from "react";
+import { delay, motion, useMotionValue } from "framer-motion";
 import ExperienceMobileCard from "./ExperienceMobileCard";
+import ExperienceContext from "@/contexts/ExperienceContext";
 import "../globals.scss";
 
 const imgs = ["/imgs/nature/1.jpg", "/imgs/nature/2.jpg", "/imgs/nature/3.jpg"];
 
 const ONE_SECOND = 2000;
 const AUTO_DELAY = ONE_SECOND * 10;
-const DRAG_BUFFER = 0;
+const DRAG_BUFFER = 20;
 
 const SPRING_OPTIONS = {
   type: "spring",
@@ -18,7 +19,7 @@ const SPRING_OPTIONS = {
 
 export const ExperienceMobile = () => {
   const [imgIndex, setImgIndex] = useState(0);
-
+  const ExperienceObj = useContext(ExperienceContext);
   const dragX = useMotionValue(0);
 
   // useEffect(() => {
@@ -48,8 +49,55 @@ export const ExperienceMobile = () => {
     }
   };
 
+  const Images = ({ imgIndex }) => {
+    return (
+      <>
+        {ExperienceObj.map((experience, index) => {
+          return (
+            <motion.div
+              key={index}
+              // style={{
+              //   backgroundImage: `url(${imgSrc})`,
+              //   backgroundSize: "cover",
+              //   backgroundPosition: "center",
+              // }}
+              // animate={{
+              //   scale: imgIndex === idx ? 0.95 : 0.85,
+              // }}
+              transition={SPRING_OPTIONS}
+              className="h-[70vh] scale-90 w-screen shrink-0 rounded-xl bg-[#6cb545] object-cover"
+            >
+              <ExperienceMobileCard experience={experience} key={index} />
+            </motion.div>
+          );
+        })}
+      </>
+    );
+  };
+
+  const Dots = ({ imgIndex, setImgIndex }) => {
+    return (
+      <div className=" flex w-full justify-center gap-2">
+        {ExperienceObj.map((_, idx) => {
+          return (
+            <button
+              key={idx}
+              onClick={() => setImgIndex(idx)}
+              className={`h-3 w-3 rounded-full transition-colors ${
+                idx === imgIndex ? "bg-neutral-50" : "bg-neutral-500"
+              }`}
+            />
+          );
+        })}
+      </div>
+    );
+  };
+
   return (
-    <div className="relative overflow-hiddenx py-8 h-dvh bg-slate-500">
+    <div className="relative overflow-x-hidden h-dvh bg-[#323232]">
+      <div className="exp-mobile-heading flex justify-center items-center text-3xl text-white pt-4">
+        Experience
+      </div>
       <motion.div
         drag="x"
         dragConstraints={{
@@ -62,7 +110,7 @@ export const ExperienceMobile = () => {
         animate={{
           translateX: `-${imgIndex * 100}%`,
         }}
-        transition={SPRING_OPTIONS}
+        // transition={SPRING_OPTIONS}
         onDragEnd={onDragEnd}
         className="flex cursor-grab items-center active:cursor-grabbing"
       >
@@ -70,50 +118,6 @@ export const ExperienceMobile = () => {
       </motion.div>
 
       <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} />
-    </div>
-  );
-};
-
-const Images = ({ imgIndex }) => {
-  return (
-    <>
-      {imgs.map((imgSrc, idx) => {
-        return (
-          <motion.div
-            key={idx}
-            style={{
-              backgroundImage: `url(${imgSrc})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-            animate={{
-              scale: imgIndex === idx ? 0.95 : 0.85,
-            }}
-            transition={SPRING_OPTIONS}
-            className="h-[80vh] w-screen shrink-0 rounded-xl bg-blue-800 object-cover"
-          >
-            <ExperienceMobileCard />
-          </motion.div>
-        );
-      })}
-    </>
-  );
-};
-
-const Dots = ({ imgIndex, setImgIndex }) => {
-  return (
-    <div className="mt-4 flex w-full justify-center gap-2">
-      {imgs.map((_, idx) => {
-        return (
-          <button
-            key={idx}
-            onClick={() => setImgIndex(idx)}
-            className={`h-3 w-3 rounded-full transition-colors ${
-              idx === imgIndex ? "bg-neutral-50" : "bg-neutral-500"
-            }`}
-          />
-        );
-      })}
     </div>
   );
 };
