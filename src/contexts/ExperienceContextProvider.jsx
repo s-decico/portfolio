@@ -105,7 +105,7 @@ const ExperienceContextProvider = ({ children }) => {
           logo: "https://www.tatvasoft.com/blog/wp-content/uploads/2020/07/SPFx-Extensions-%E2%80%93-ListView-Command-Set.jpg",
         },
         {
-          skillname: "Power Automate",
+          skillname: "Automate",
           logo: "https://play-lh.googleusercontent.com/aeXs0qriXwmHVWtq9u4zVUO6SifULKtJOQdtBg6wDQqaNEaaJKl6b2oiABMmHn6yLH8",
         },
       ],

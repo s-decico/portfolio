@@ -95,7 +95,7 @@ export const ExperienceMobile = () => {
 
   return (
     <div className="relative overflow-x-hidden h-dvh bg-[#323232]">
-      <div className="exp-mobile-heading flex justify-center items-center text-3xl text-white pt-4">
+      <div className="exp-mobile-heading flex justify-center items-center text-5xl text-white pt-4">
         Experience
       </div>
       <motion.div

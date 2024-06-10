@@ -18,6 +18,7 @@ const Projects = () => {
         ref={container}
         className="projects-container relative w-full h-[400dvh] bg-[#323232] text-white flex flex-col items-center justify-center gap-24 py-32"
       >
+        <div className="heading text-5xl">Projects</div>
         {ProjectObj.map((project, index) => {
           const targetScale = 1 - (ProjectObj.length - index) * 0.05;
           if (project) {

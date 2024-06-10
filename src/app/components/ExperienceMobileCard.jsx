@@ -39,7 +39,7 @@ const ExperienceMobileCard = ({ experience }, key) => {
           if (skill) {
             return (
               <div
-                className="skill-bubble flex flex-col items-center justify-center gap-2"
+                className="skill-bubble flex flex-col items-center justify-center gap-2 text-center w-10"
                 key={index}
               >
                 <img
@@ -47,7 +47,7 @@ const ExperienceMobileCard = ({ experience }, key) => {
                   alt=""
                   className="w-10 h-10 border-2 border-white rounded-full"
                 />
-                <div className="skill-bubble-text text-sm">
+                <div className="skill-bubble-text text-[0.5rem]">
                   {skill.skillname}
                 </div>
               </div>
