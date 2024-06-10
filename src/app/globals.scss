@@ -83,6 +83,9 @@ body {
 }
 
 @media screen and (max-width: 550px) {
+  body {
+    overflow-x: hidden;
+  }
   .side-nav {
     bottom: 0;
     top: auto;
@@ -91,7 +94,6 @@ body {
     max-width: none;
     background-color: #0000008c;
     backdrop-filter: blur(10px);
-    // padding: 0;
   }
   .sidenav-container {
     display: flex;

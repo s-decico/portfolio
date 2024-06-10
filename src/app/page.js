@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Landing from "./sections/Landing";
 import Experience from "./sections/Experience";
-import ExperienceMobile from "./components/ExperienceMobile";
+import { ExperienceMobile } from "./components/ExperienceMobile";
 import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
