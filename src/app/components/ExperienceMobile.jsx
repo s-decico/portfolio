@@ -13,8 +13,8 @@ const DRAG_BUFFER = 20;
 const SPRING_OPTIONS = {
   type: "spring",
   mass: 1,
-  stiffness: 100,
-  damping: 50,
+  stiffness: 50,
+  damping: 10,
 };
 
 export const ExperienceMobile = () => {
@@ -64,7 +64,7 @@ export const ExperienceMobile = () => {
               // animate={{
               //   scale: imgIndex === idx ? 0.95 : 0.85,
               // }}
-              transition={SPRING_OPTIONS}
+              transition="ease"
               className="h-[70vh] scale-90 w-screen shrink-0 rounded-xl bg-[#6cb545] object-cover"
             >
               <ExperienceMobileCard experience={experience} key={index} />
@@ -110,7 +110,7 @@ export const ExperienceMobile = () => {
         animate={{
           translateX: `-${imgIndex * 100}%`,
         }}
-        // transition={SPRING_OPTIONS}
+        transition={SPRING_OPTIONS}
         onDragEnd={onDragEnd}
         className="flex cursor-grab items-center active:cursor-grabbing"
       >

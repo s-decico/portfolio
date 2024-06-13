@@ -1,14 +1,47 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../globals.scss";
 import ContactContext from "@/contexts/ContactContext";
+import toast, { Toaster } from "react-hot-toast";
+import { emailTrigger } from "../Jobs/EmailTrigger";
+import Image from "next/image";
 
 const Contact = () => {
   const contactObj = useContext(ContactContext);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    description: "",
+  });
+  const [error, setError] = useState("");
 
   const handleSocialClick = (id) => {
     if (id) {
       window.open(contactObj.socials[id].url, "_blank", "noopener noreferrer");
     }
+  };
+
+  const handleSend = () => {
+    if (!formData.name || !formData.email || !formData.description) {
+      toast.error("Please enter all the details");
+    } else if (formData.email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const validEmail = emailRegex.test(formData.email);
+      if (!validEmail) {
+        toast.error("Please enter a valid email");
+      } else {
+        const messageData = {
+          name: formData.name,
+          email: formData.email,
+          message: formData.description,
+        };
+        emailTrigger(messageData);
+      }
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
   return (
@@ -98,7 +131,7 @@ const Contact = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
+                    d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
                   />
                 </svg>
               </button>
@@ -112,24 +145,31 @@ const Contact = () => {
             <input
               type="text"
               id="name"
+              value={formData.name}
+              onChange={handleChange}
               className="form-input h-12 w-[70%] bg-transparent border-2 border-grey-500"
               placeholder="Name"
             />
             <input
               type="text"
               id="email"
+              value={formData.email}
+              onChange={handleChange}
               className="form-input h-12 w-[70%] bg-transparent border-2 border-grey-500"
               placeholder="Email"
             />
             <textarea
               type="text"
               id="description"
+              value={formData.description}
+              onChange={handleChange}
               className="form-input h-32 w-[70%] bg-transparent border-2 border-grey-500"
               placeholder="Description..."
             />
             <button
               type="button"
               className="button-submit block w-56 h-12 leading-10"
+              onClick={handleSend}
             >
               <span className="relative z-10 h-full flex justify-center items-center gap-2">
                 Send
@@ -151,10 +191,12 @@ const Contact = () => {
             </button>
           </form>
         </div>
-        <div className=" footer w-full h-10 bg-[#6cb545]">
+        <div className=" footer w-full h-8 bg-[#6cb545] text-center items-center">
           Made by Syamantak Sarkar
         </div>
       </div>
+      {error && <div>{error}</div>}
+      <Toaster />
     </>
   );
 };

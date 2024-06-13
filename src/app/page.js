@@ -13,6 +13,7 @@ import ProjectContextProvider from "@/contexts/ProjectContextProvider";
 import ContactContextProvider from "@/contexts/ContactContextProvider";
 import SideNavbar from "./components/Sidenavbar";
 import React, { useState, useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Home() {
   const [showSideNavbar, setShowSideNavbar] = useState(false);
@@ -116,6 +117,7 @@ export default function Home() {
           </section>
         </div>
       </div>
+      <Toaster />
     </>
   );
 }
