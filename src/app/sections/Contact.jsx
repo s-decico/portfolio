@@ -14,6 +14,7 @@ const Contact = () => {
     description: "",
   });
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const handleSocialClick = (id) => {
     if (id) {
@@ -22,20 +23,33 @@ const Contact = () => {
   };
 
   const handleSend = () => {
+    setLoading(true);
     if (!formData.name || !formData.email || !formData.description) {
+      setLoading(false);
       toast.error("Please enter all the details");
     } else if (formData.email) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const validEmail = emailRegex.test(formData.email);
       if (!validEmail) {
+        setLoading(false);
         toast.error("Please enter a valid email");
       } else {
+        setLoading(true); // Set loading to true
         const messageData = {
           name: formData.name,
           email: formData.email,
           message: formData.description,
         };
-        emailTrigger(messageData);
+        emailTrigger(messageData)
+          .then((status) => {
+            if (status) toast.success("Your message is sent successfully");
+          })
+          .catch((err) => {
+            toast.error("Failed to send message");
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       }
     }
   };
@@ -53,8 +67,12 @@ const Contact = () => {
         <div className=" contact-details w-full h-full overflow-hidden flex gap-10 justify-center items-center">
           <div className="contact-info w-1/2 h-full flex flex-col gap-6 justify-center items-end">
             <div className="contact-hero-text text-2xl font-thin">
-              <span className="text-[#6cb545] font-medium ">Lets connect!</span>{" "}
-              Below are my handles
+              <span className="contact-hero-text-top text-[#6cb545] font-medium ">
+                Lets connect!
+              </span>
+              <span className="contact-hero-text-bottom">
+                Below are my handles
+              </span>
             </div>
             <div className="direct-contacts flex gap-4">
               <a
@@ -65,7 +83,7 @@ const Contact = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="white"
-                  className=" email p-1 w-9 h-9 text-white rounded-full hover:scale-110 transition-all delay-50 ease-out hover:bg-[#6cb545]"
+                  className=" email p-1 w-9 h-9 text-white rounded-full hover:scale-110 transition-all delay-50 origin-center ease-out hover:bg-[#6cb545]"
                 >
                   <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
                   <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
@@ -77,7 +95,7 @@ const Contact = () => {
             <div className="socials flex gap-2">
               <button
                 type="button"
-                className="w-10 h-10 rounded-full hover:scale-110 transition-all delay-50 ease-out hover:bg-[#6cb545]"
+                className="w-10 h-10 rounded-full hover:scale-110 transition-all delay-50 origin-center ease-out hover:bg-[#6cb545]"
                 id="github"
                 onClick={() => {
                   handleSocialClick("github");
@@ -96,7 +114,7 @@ const Contact = () => {
 
               <button
                 type="button"
-                className=" w-10 h-10 flex justify-center items-center rounded-full hover:scale-110 transition-all delay-50 ease-out hover:bg-[#6cb545]"
+                className=" w-10 h-10 flex justify-center items-center rounded-full hover:scale-110 transition-all delay-50 origin-center ease-out hover:bg-[#6cb545]"
                 id="linkedin"
                 onClick={() => {
                   handleSocialClick("linkedin");
@@ -114,7 +132,7 @@ const Contact = () => {
               </button>
 
               <button
-                className=" w-10 h-10 flex justify-center items-center rounded-full hover:scale-110 transition-all delay-50 ease-out hover:bg-[#6cb545]"
+                className=" w-10 h-10 flex justify-center items-center rounded-full hover:scale-110 transition-all delay-50 origin-center ease-out hover:bg-[#6cb545]"
                 id="website"
                 onClick={() => {
                   handleSocialClick("website");
@@ -131,7 +149,7 @@ const Contact = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                    d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
                   />
                 </svg>
               </button>
@@ -170,24 +188,32 @@ const Contact = () => {
               type="button"
               className="button-submit block w-56 h-12 leading-10"
               onClick={handleSend}
+              disabled={loading} // Disable button when loading
             >
-              <span className="relative z-10 h-full flex justify-center items-center gap-2">
-                Send
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
-                  />
-                </svg>
-              </span>
+              {loading ? (
+                <span className="relative z-10 h-full flex justify-center items-center gap-2">
+                  <Image src="/circularLoader.svg" width={120} height={120} />
+                </span>
+              ) : (
+                // Show loading text when loading
+                <span className="relative z-10 h-full flex justify-center items-center gap-2">
+                  Send
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                    />
+                  </svg>
+                </span>
+              )}
             </button>
           </form>
         </div>

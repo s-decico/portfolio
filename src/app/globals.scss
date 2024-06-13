@@ -204,9 +204,17 @@ body {
   }
   .contact-info {
     width: 100%;
-    align-items: flex-start;
-    padding-left: 1rem;
+    align-items: center;
     gap: 0.5rem;
     padding-bottom: 4rem;
+  }
+  .contact-hero-text {
+    margin-top: 2rem;
+  }
+  .contact-hero-text-top {
+    padding-left: 0.3rem;
+  }
+  .contact-hero-text-bottom {
+    display: none;
   }
 }
