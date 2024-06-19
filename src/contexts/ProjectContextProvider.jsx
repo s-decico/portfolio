@@ -48,7 +48,7 @@ const ProjectContextProvider = ({ children }) => {
       projectLink: "https://github.com/s-decico/tabs-group-extension",
       projectTechStack: ["JavaScript", "Chrome APIs"],
       date: "July-2024",
-      color: "#7dbf63",
+      color: "#6d9e53",
       projectPicture: "/tabextension_proj.jpg",
 
       projectDescription: [
@@ -63,7 +63,7 @@ const ProjectContextProvider = ({ children }) => {
       projectLink: "https://s-decico.github.io/WeatherApp/",
       projectTechStack: ["HTML", "CSS", "JavaSxript", "OpenWeatherMap API"],
       date: "Oct-2023",
-      color: "#6d9e53",
+      color: "#7daf63",
       projectPicture: "/weather_proj.jpg",
       projectDescription: [
         "A responsive weather website",
@@ -76,7 +76,7 @@ const ProjectContextProvider = ({ children }) => {
       projectLink: "",
       projectTechStack: ["React", "Material UI"],
       date: "Oct-2023",
-      color: "#7daf63",
+      color: "#7dbf63",
       projectPicture: "/patient_proj.jpg",
 
       projectDescription: [
