@@ -5,7 +5,7 @@ import ProjectContext from "./ProjectContext";
 const ProjectContextProvider = ({ children }) => {
   const [Project, setProject] = useState([
     {
-      projectName: "Resumate",
+      projectName: "RESUMATE",
       projectLinkFlag: true,
       projectLink: "https://resumatebys.vercel.app/",
       projectTechStack: [
@@ -14,6 +14,7 @@ const ProjectContextProvider = ({ children }) => {
         "NodeJS",
         "ExpressJS",
         "MongoDB",
+        "Authentication",
         "JWT",
         "Bcrypt",
       ],
@@ -28,7 +29,7 @@ const ProjectContextProvider = ({ children }) => {
       ],
     },
     {
-      projectName: "Portfolio Website",
+      projectName: "PORTFOLIO WEBSITE",
       projectLinkFlag: true,
       projectLink: "https://syamantaksarkar.vercel.app/",
       projectTechStack: ["NextJS", "Tailwind CSS", "Context API"],
@@ -42,7 +43,22 @@ const ProjectContextProvider = ({ children }) => {
       ],
     },
     {
-      projectName: "Weather App",
+      projectName: "TAB GROUPER CHROME EXTENSION",
+      projectLinkFlag: true,
+      projectLink: "https://github.com/s-decico/tabs-group-extension",
+      projectTechStack: ["JavaScript", "Chrome APIs"],
+      date: "July-2024",
+      color: "#7dbf63",
+      projectPicture: "/tabextension_proj.jpg",
+
+      projectDescription: [
+        "Designed a simple easy to use extension",
+        "Just with one click group all the tabs based on domain",
+        "With one click you can ungroup also at your convenience",
+      ],
+    },
+    {
+      projectName: "WEATHER APP",
       projectLinkFlag: true,
       projectLink: "https://s-decico.github.io/WeatherApp/",
       projectTechStack: ["HTML", "CSS", "JavaSxript", "OpenWeatherMap API"],
@@ -55,7 +71,7 @@ const ProjectContextProvider = ({ children }) => {
       ],
     },
     {
-      projectName: "Patient Management Dashboard UI",
+      projectName: "PATIENT MANAGEMENT DASHBOARD UI",
       projectLinkFlag: false,
       projectLink: "",
       projectTechStack: ["React", "Material UI"],

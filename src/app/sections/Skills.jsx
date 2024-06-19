@@ -35,8 +35,8 @@ const Skills = () => {
         ref={targetRef}
         className="skills-container relative w-full bg-[#323232] p-20"
       >
-        <div className="skill-heading text-5xl text-white mb-8 flex items-center justify-center w-full ">
-          Skills
+        <div className="skill-heading heading-font text-5xl text-white mb-24 flex items-center justify-center w-full ">
+          SKILLS
         </div>
         <div className="skill-card-container flex flex-wrap gap-4 items-center justify-center sticky top-0  py-4">
           {skillObj &&

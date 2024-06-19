@@ -18,30 +18,30 @@ const Landing = () => {
               Idea to Online Impact
             </div> */}
             <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] min-h-14">
-              {/* <ReactTyped
-                startWhenVisible
-                strings={["Hi! I'm Syamatak", "I'm a full stack developer"]}
-                typeSpeed={50}
-                backSpeed={50}
-                className="hero-text-top overflow-hidden p-0 text-[#6cb545] min-h-14"
-              /> */}
-
               <TypeAnimation
                 sequence={[
-                  // Same substring at the start will only be typed out once, initially
                   "Hi! I am Syamatak",
-                  1000, // wait 1s before replacing "Mice" with "Hamsters"
+                  1000,
                   "Hi! I am a full stack developer",
                   1000,
                 ]}
                 wrapper="div"
                 speed={50}
-                style={{ fontSize: "1em", display: "inline-block" }}
+                style={{
+                  fontSize: "1em",
+                  display: "inline-block",
+                  fontFamily: "Anton",
+                }}
                 repeat={Infinity}
               />
             </div>
 
-            <div className="hero-text-bottom overflow-hidden text-[#323232] min-h-14 ">
+            <div
+              className="hero-text-bottom overflow-hidden text-[#323232] min-h-14 "
+              style={{
+                fontFamily: "Anton",
+              }}
+            >
               Lets code your way online
             </div>
           </div>

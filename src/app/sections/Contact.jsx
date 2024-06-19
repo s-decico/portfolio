@@ -61,13 +61,13 @@ const Contact = () => {
   return (
     <>
       <div className="contact-container flex flex-col h-dvh bg-[#323232] text-white">
-        <div className="contact-heading flex h-24 w-full text-5xl justify-center items-center pt-10">
-          Contact Me
+        <div className="contact-heading heading-font flex h-24 w-full text-5xl justify-center items-center pt-10">
+          CONTACT ME
         </div>
         <div className=" contact-details w-full h-full overflow-hidden flex gap-10 justify-center items-center">
           <div className="contact-info w-1/2 h-full flex flex-col gap-6 justify-center items-end">
             <div className="contact-hero-text text-2xl font-thin">
-              <span className="contact-hero-text-top text-[#6cb545] font-medium ">
+              <span className="contact-hero-text-top text-[#6cb545] font-medium px-2">
                 Lets connect!
               </span>
               <span className="contact-hero-text-bottom">
@@ -186,16 +186,20 @@ const Contact = () => {
             />
             <button
               type="button"
-              className="button-submit block w-56 h-12 leading-10"
+              className="button-submit block w-56 h-12 leading-10 cursor-pointer"
               onClick={handleSend}
-              disabled={loading} // Disable button when loading
+              disabled={loading}
             >
               {loading ? (
                 <span className="relative z-10 h-full flex justify-center items-center gap-2">
-                  <Image src="/circularLoader.svg" width={120} height={120} />
+                  <Image
+                    src="/circularLoader.svg"
+                    width={120}
+                    height={120}
+                    alt="Loader.."
+                  />
                 </span>
               ) : (
-                // Show loading text when loading
                 <span className="relative z-10 h-full flex justify-center items-center gap-2">
                   Send
                   <svg

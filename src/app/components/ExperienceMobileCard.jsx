@@ -21,7 +21,7 @@ const ExperienceMobileCard = ({ experience }, key) => {
         <div className="exp-mobile-company-logo w-40 h-40 rounded-full overflow-hidden">
           <img src={companylogo != null && companylogo} alt="" />
         </div>
-        <div className="exp-mobile-company-name text-5xl py-6">
+        <div className="exp-mobile-company-name card-heading-font text-5xl py-6">
           {companyname != null && companyname}
         </div>
       </div>

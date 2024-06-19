@@ -26,7 +26,7 @@ const ExperienceCard = ({ experience }, key) => {
       >
         <div className="experience-logo flex justify-between items-center h-36 p-4 bg-[#00000036] rounded-lg border-2 border-[#6cb545]">
           <div className="company-name-designation flex flex-col justify-around">
-            <div className="company-name text-5xl">
+            <div className="company-name card-heading-font text-5xl">
               {companyname != null && companyname}
             </div>
             <div className="exp-card-designation text-xl pl-[2px] pt-2">

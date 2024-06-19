@@ -45,7 +45,9 @@ const ProjectCard = ({
           className="project-card relative w-[80vw] h-[70vh]  flex items-center justify-center px-10 gap-5 origin-top shadow-lg"
         >
           <div className="project-details overflow-hidden  w-[60%] h-[80%] flex flex-col items-start gap-2">
-            <div className="project-name text-4xl pb-10">{projectName}</div>
+            <div className="project-name card-heading-font text-4xl pb-10">
+              {projectName}
+            </div>
             <div className="project-tech flex gap-2 flex-wrap">
               {projectTechStack.map((tech, index) => {
                 if (tech) {

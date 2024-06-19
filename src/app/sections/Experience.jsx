@@ -22,8 +22,8 @@ const Experience = () => {
         className="experience-container relative h-[300vh] bg-[#323232]"
       >
         <div className="experience-card-container sticky top-0 h-screen flex items-center overflow-hidden pt-16 ">
-          <div className="section-heading top-0 text-5xl -rotate-90 text-white">
-            Experience
+          <div className="section-heading heading-font top-0 mx-10 text-5xl -rotate-90 text-white">
+            EXPERIENCE
           </div>
           <motion.div
             className="exp-cards h-full flex gap-8 p-4 w-max pl-20"
