@@ -60,7 +60,7 @@ const ProjectContextProvider = ({ children }) => {
     {
       projectName: "WEATHER APP",
       projectLinkFlag: true,
-      projectLink: "https://s-decico.github.io/WeatherApp/",
+      projectLink: "https://weatherwebtoday.vercel.app/",
       projectTechStack: ["HTML", "CSS", "JavaSxript", "OpenWeatherMap API"],
       date: "Oct-2023",
       color: "#7daf63",
