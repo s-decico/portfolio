@@ -20,7 +20,7 @@ const Landing = () => {
             <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] min-h-14">
               <TypeAnimation
                 sequence={[
-                  "Hi! I am Syamatak",
+                  "Hi! I am Syamantak",
                   1000,
                   "Hi! I am a full stack developer",
                   1000,
