@@ -14,6 +14,8 @@ import ContactContextProvider from "@/contexts/ContactContextProvider";
 import SideNavbar from "./components/Sidenavbar";
 import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import CertificateContextProvider from "@/contexts/CertificateContextProvider";
+import Certificate from "./sections/Certificate";
 
 export default function Home() {
   const [showSideNavbar, setShowSideNavbar] = useState(false);
@@ -37,12 +39,14 @@ export default function Home() {
       const experienceSection = document.getElementById("experience");
       const skillsSection = document.getElementById("skills");
       const projectsSection = document.getElementById("projects");
+      // const certificationsSection = document.getElementById("certifications");
       const contactSection = document.getElementById("contact");
 
       const verticalScroll = window.scrollY;
       const experienceSectionTop = experienceSection.offsetTop;
       const skillsSectionTop = skillsSection.offsetTop;
       const projectsSectionTop = projectsSection.offsetTop;
+      // const certificationsSectionTop = certificationsSection.offsetTop;
       const contactSectionTop = contactSection.offsetTop;
 
       if (verticalScroll < experienceSectionTop - 50)
@@ -62,6 +66,12 @@ export default function Home() {
         verticalScroll < contactSectionTop - 200
       )
         setActiveSectionId("projects");
+      // else if (
+      //   verticalScroll > certificationsSectionTop - 100 &&
+      //   verticalScroll < contactSectionTop - 200
+      // ) {
+      //   setActiveSectionId("certifications");
+      // }
       else if (verticalScroll >= contactSectionTop - 200)
         setActiveSectionId("contact");
 
@@ -85,7 +95,7 @@ export default function Home() {
         <section id="home">
           <Landing />
         </section>
-        <div className="side-nav-sections ">
+        <div className="side-nav-sections">
           {showSideNavbar && (
             <div className="side-nav z-10 fixed left-0 top-[200px] bg-[#00000065] w-max max-w-28 h-max p-1 backdrop-blur-md">
               <SideNavbar
@@ -110,6 +120,11 @@ export default function Home() {
               <Projects />
             </ProjectContextProvider>
           </section>
+          {/* <section id="certifications">
+            <CertificateContextProvider>
+              <Certificate />
+            </CertificateContextProvider>
+          </section> */}
           <section id="contact">
             <ContactContextProvider>
               <Contact />

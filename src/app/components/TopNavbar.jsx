@@ -11,6 +11,11 @@ const TopNavbar = () => {
     { label: "Experience", id: "experience", navid: "navExperience" },
     { label: "Skills", id: "skills", navid: "navSkills" },
     { label: "Projects", id: "projects", navid: "navProjects" },
+    // {
+    //   label: "Certifications",
+    //   id: "certifications",
+    //   navid: "navcertifications",
+    // },
     { label: "Contact", id: "contact", navid: "navcontact" },
   ];
 
