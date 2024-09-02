@@ -26,8 +26,8 @@ const ExperienceContextProvider = ({ children }) => {
           logo: "https://media.licdn.com/dms/image/D4D12AQEeNNHq05k7MA/article-cover_image-shrink_720_1280/0/1687786979245?e=2147483647&v=beta&t=AVc2G-hvHNjTMklQtEt6qlby2l79Bf5dBBkUB5DBRe0",
         },
         {
-          skillname: "SPFx",
-          logo: "https://www.tatvasoft.com/blog/wp-content/uploads/2020/07/SPFx-Extensions-%E2%80%93-ListView-Command-Set.jpg",
+          skillname: "OAuth",
+          logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhh7jt2KAnGn2VSYB9P-Z5ETReMXwsWowkwA&s",
         },
       ],
       from: "Oct-2023",
@@ -67,10 +67,6 @@ const ExperienceContextProvider = ({ children }) => {
           logo: "https://static-00.iconduck.com/assets.00/c-sharp-c-icon-1822x2048-wuf3ijab.png",
         },
         {
-          skillname: "SPFx",
-          logo: "https://www.tatvasoft.com/blog/wp-content/uploads/2020/07/SPFx-Extensions-%E2%80%93-ListView-Command-Set.jpg",
-        },
-        {
           skillname: "Powershell",
           logo: "https://cdn.iconscout.com/icon/free/png-256/free-powershell-3521649-2945093.png",
         },
@@ -99,14 +95,6 @@ const ExperienceContextProvider = ({ children }) => {
         {
           skillname: "JavaScript",
           logo: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
-        },
-        {
-          skillname: "SPFx",
-          logo: "https://www.tatvasoft.com/blog/wp-content/uploads/2020/07/SPFx-Extensions-%E2%80%93-ListView-Command-Set.jpg",
-        },
-        {
-          skillname: "Automate",
-          logo: "https://play-lh.googleusercontent.com/aeXs0qriXwmHVWtq9u4zVUO6SifULKtJOQdtBg6wDQqaNEaaJKl6b2oiABMmHn6yLH8",
         },
       ],
       from: "Aug-2021",
