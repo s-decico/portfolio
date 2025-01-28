@@ -5,6 +5,38 @@ import ExperienceContext from "./ExperienceContext";
 const ExperienceContextProvider = ({ children }) => {
   const [Experience, setExperience] = useState([
     {
+      companyname: "Infosys",
+      designation: "Senior Associate Consultant",
+      // skills: ["React", "TypeScript", "C#", "REST APIs", "SPFx"],
+      skills: [
+        {
+          skillname: "React",
+          logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+        },
+        {
+          skillname: "TypeScript",
+          logo: "https://static-00.iconduck.com/assets.00/typescript-plain-icon-256x256-ypojgpyj.png",
+        },
+        {
+          skillname: "Node",
+          logo: "https://www.svgrepo.com/show/331488/mongodb.svg",
+        },
+        {
+          skillname: "MongoDB",
+          logo: "https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png",
+        },
+        {
+          skillname: "ExpressJs",
+          logo: "https://adware-technologies.s3.amazonaws.com/uploads/technology/thumbnail/20/express-js.png",
+        },
+      ],
+      from: "Dec-2024",
+      to: "Present",
+      companylogo:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOb0W_vzx_kj-Ty0DDoRHMf1k7MFpajnMKVA&s",
+      details: ["Managing a team of 4 to maintain a MERN application"],
+    },
+    {
       companyname: "Cognizant",
       designation: "Associate",
       // skills: ["React", "TypeScript", "C#", "REST APIs", "SPFx"],
@@ -31,7 +63,7 @@ const ExperienceContextProvider = ({ children }) => {
         },
       ],
       from: "Oct-2023",
-      to: "Present",
+      to: "Dec-2023",
       companylogo:
         "https://upload.wikimedia.org/wikipedia/commons/5/5a/Logo_Cognizant.png",
       details: [
