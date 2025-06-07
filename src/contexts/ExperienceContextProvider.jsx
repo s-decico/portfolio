@@ -34,7 +34,12 @@ const ExperienceContextProvider = ({ children }) => {
       to: "Present",
       companylogo:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOb0W_vzx_kj-Ty0DDoRHMf1k7MFpajnMKVA&s",
-      details: ["Managing a team of 4 to maintain a MERN application"],
+      details: [
+        "Resolved critical screen reader and keyboard navigation issues, significantly boosting user inclusivity",
+        "Created a flexible authentication solution, seamlessly integrating OAuth with traditional login methods for broader user choice",
+        "Improved application responsiveness through strategic memoization and efficient re-render control",
+        "Optimized global state management for minimized re-renders and enhanced data flow efficiency",
+      ],
     },
     {
       companyname: "Cognizant",

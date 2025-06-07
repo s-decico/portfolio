@@ -42,10 +42,15 @@ const Contact = () => {
         };
         emailTrigger(messageData)
           .then((status) => {
-            if (status) toast.success("Your message is sent successfully");
+            if (status) {
+              toast.success("Your message is sent successfully");
+            } else {
+              console.error("Email send failed with response:", response);
+              toast.error("Failed to send message. Please try again later");
+            }
           })
           .catch((err) => {
-            toast.error("Failed to send message");
+            toast.error("Failed to send message. Please try again later");
           })
           .finally(() => {
             setLoading(false);
