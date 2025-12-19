@@ -17,13 +17,11 @@ const SkillContextProvider = ({ children }) => {
 
     {
       skillName: "NodeJS",
-      logoURL:
-        "https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png",
+      logoURL: "https://www.svgrepo.com/show/303360/nodejs-logo.svg",
     },
     {
       skillName: "ExpressJs",
-      logoURL:
-        "https://adware-technologies.s3.amazonaws.com/uploads/technology/thumbnail/20/express-js.png",
+      logoURL: "https://img.icons8.com/office80/1200/express-js.jpg",
     },
     {
       skillName: "MongoDB",
@@ -31,13 +29,12 @@ const SkillContextProvider = ({ children }) => {
     },
     {
       skillName: "JWT",
-      logoURL:
-        "https://blog.larapulse.com/files/original/images/d5/a3/d5a367b37c344b9dab323f9a4b1430847d12b403.png",
+      logoURL: "https://logo.svgcdn.com/logos/jwt.png",
     },
     {
       skillName: "OAuth",
       logoURL:
-        "https://static-00.iconduck.com/assets.00/oauth-icon-2043x2048-72bpfcq4.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Oauth_logo.svg/500px-Oauth_logo.svg.png",
     },
     {
       skillName: "HTML",
@@ -51,8 +48,7 @@ const SkillContextProvider = ({ children }) => {
     },
     {
       skillName: "Tailwind CSS",
-      logoURL:
-        "https://static-00.iconduck.com/assets.00/tailwind-css-icon-2048x1229-u8dzt4uh.png",
+      logoURL: "https://www.svgrepo.com/show/374118/tailwind.svg",
     },
     // {
     //   skillName: "Framer Motion",
@@ -61,8 +57,7 @@ const SkillContextProvider = ({ children }) => {
     // },
     {
       skillName: "TypeScript",
-      logoURL:
-        "https://static-00.iconduck.com/assets.00/typescript-plain-icon-256x256-ypojgpyj.png",
+      logoURL: "https://cdn-icons-png.flaticon.com/512/5968/5968381.png",
     },
     {
       skillName: "JavaScript",
@@ -72,12 +67,12 @@ const SkillContextProvider = ({ children }) => {
     {
       skillName: "C++",
       logoURL:
-        "https://static-00.iconduck.com/assets.00/c-icon-1822x2048-y6utrv43.png",
+        "https://juststickers.in/wp-content/uploads/2016/09/c-plus-plus.png",
     },
     {
       skillName: "C#",
       logoURL:
-        "https://static-00.iconduck.com/assets.00/c-sharp-c-icon-1822x2048-wuf3ijab.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_C_sharp.svg/1067px-Logo_C_sharp.svg.png",
     },
   ]);
 
