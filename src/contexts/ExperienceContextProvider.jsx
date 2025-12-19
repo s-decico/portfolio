@@ -35,10 +35,12 @@ const ExperienceContextProvider = ({ children }) => {
       companylogo:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOb0W_vzx_kj-Ty0DDoRHMf1k7MFpajnMKVA&s",
       details: [
-        "Resolved critical screen reader and keyboard navigation issues, significantly boosting user inclusivity",
-        "Created a flexible authentication solution, seamlessly integrating OAuth with traditional login methods for broader user choice",
-        "Improved application responsiveness through strategic memoization and efficient re-render control",
-        "Optimized global state management for minimized re-renders and enhanced data flow efficiency",
+        "Collaborated with UI/UX and Product teams to launch new features and optimize application performance.",
+        "Engineered an OAuth 2.0 system with test-user mapping, enhancing audit traceability and developer security.",
+        "Reduced load times by 20% through code splitting, memoization, and legacy refactoring.",
+        "Achieved a 40% gain in responsiveness by offloading heavy initial-load tasks to Web Workers and removed page unresponsive issue.",
+        "Improved inclusivity by resolving screen reader and keyboard navigation issues (WCAG compliance).",
+        "Gained additional 5% speed improvement by eliminating orphaned DOM nodes and redundant event handlers.",
       ],
     },
     {
