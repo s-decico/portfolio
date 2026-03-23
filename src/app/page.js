@@ -12,10 +12,10 @@ import SkillContextProvider from "@/contexts/SkillContextProvider";
 import ProjectContextProvider from "@/contexts/ProjectContextProvider";
 import ContactContextProvider from "@/contexts/ContactContextProvider";
 import SideNavbar from "./components/Sidenavbar";
+import TopNavbar from "./components/TopNavbar";
 import React, { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
-import CertificateContextProvider from "@/contexts/CertificateContextProvider";
-import Certificate from "./sections/Certificate";
 
 export default function Home() {
   const [showSideNavbar, setShowSideNavbar] = useState(false);
@@ -24,14 +24,12 @@ export default function Home() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 550); // Adjust the width as per your requirement
+      setIsMobile(window.innerWidth <= 768); // Increased threshold to catch tablets
     };
 
-    handleResize(); // Check on initial load
+    handleResize();
     window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -39,98 +37,111 @@ export default function Home() {
       const experienceSection = document.getElementById("experience");
       const skillsSection = document.getElementById("skills");
       const projectsSection = document.getElementById("projects");
-      // const certificationsSection = document.getElementById("certifications");
       const contactSection = document.getElementById("contact");
+
+      if (!experienceSection || !skillsSection || !projectsSection || !contactSection) return;
 
       const verticalScroll = window.scrollY;
       const experienceSectionTop = experienceSection.offsetTop;
       const skillsSectionTop = skillsSection.offsetTop;
       const projectsSectionTop = projectsSection.offsetTop;
-      // const certificationsSectionTop = certificationsSection.offsetTop;
       const contactSectionTop = contactSection.offsetTop;
 
-      if (verticalScroll < experienceSectionTop - 50)
-        setActiveSectionId("home");
-      else if (
-        verticalScroll > experienceSectionTop - 100 &&
-        verticalScroll < skillsSectionTop - 100
-      )
-        setActiveSectionId("experience");
-      else if (
-        verticalScroll > skillsSectionTop - 100 &&
-        verticalScroll < projectsSectionTop - 100
-      )
-        setActiveSectionId("skills");
-      else if (
-        verticalScroll > projectsSectionTop - 100 &&
-        verticalScroll < contactSectionTop - 200
-      )
-        setActiveSectionId("projects");
-      // else if (
-      //   verticalScroll > certificationsSectionTop - 100 &&
-      //   verticalScroll < contactSectionTop - 200
-      // ) {
-      //   setActiveSectionId("certifications");
-      // }
-      else if (verticalScroll >= contactSectionTop - 200)
-        setActiveSectionId("contact");
+      // Active Section Tracking
+      if (verticalScroll < experienceSectionTop - 100) setActiveSectionId("home");
+      else if (verticalScroll < skillsSectionTop - 100) setActiveSectionId("experience");
+      else if (verticalScroll < projectsSectionTop - 100) setActiveSectionId("skills");
+      else if (verticalScroll < contactSectionTop - 200) setActiveSectionId("projects");
+      else setActiveSectionId("contact");
 
+      // SideNav vs TopNav Orchestration
+      // On desktop, show side nav only after scrolling past landing
+      // On mobile, show side nav always (or based on preference)
       if (isMobile) {
-        setShowSideNavbar(true);
+        setShowSideNavbar(true); 
       } else {
-        setShowSideNavbar(verticalScroll >= experienceSectionTop - 300);
+        setShowSideNavbar(verticalScroll >= 500); 
       }
     };
 
-    handleScroll(); // Check on initial load
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [isMobile]);
-
   return (
     <>
-      <div className="main-container relative w-full min-w-[360px]">
-        <section id="home">
-          <Landing />
-        </section>
-        <div className="side-nav-sections">
-          {showSideNavbar && (
-            <div className="side-nav z-10 fixed left-0 top-[200px] bg-[#00000065] w-max max-w-28 h-max p-1 backdrop-blur-md">
+      {/* Sidenav Dock: Vertically Centered on Left */}
+      <AnimatePresence>
+        {showSideNavbar && (
+          <div 
+            style={{ 
+              position: 'fixed', 
+              top: 0, 
+              left: '1rem', 
+              height: '100vh', 
+              display: 'flex', 
+              flexDirection: 'column',
+              justifyContent: 'center',
+              zIndex: 100,
+              pointerEvents: 'none'
+            }}
+          >
+            <motion.div 
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -100, opacity: 0 }}
+              style={{ pointerEvents: 'auto', padding: '0.5rem' }}
+            >
               <SideNavbar
                 showSideNavbar={showSideNavbar}
                 activeSectionId={activeSectionId}
               />
-            </div>
-          )}
-          <section id="experience">
-            <ExperienceContextProvider>
-              {isMobile ? <ExperienceMobile /> : <Experience />}
-            </ExperienceContextProvider>
-          </section>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
-          <section id="skills">
-            <SkillContextProvider>
-              <Skills />
-            </SkillContextProvider>
-          </section>
-          <section id="projects">
-            <ProjectContextProvider>
-              <Projects />
-            </ProjectContextProvider>
-          </section>
-          {/* <section id="certifications">
-            <CertificateContextProvider>
-              <Certificate />
-            </CertificateContextProvider>
-          </section> */}
-          <section id="contact">
-            <ContactContextProvider>
-              <Contact />
-            </ContactContextProvider>
-          </section>
-        </div>
+      <div className="main-container relative w-full min-w-[360px]">
+        {/* Top Navbar: only show when Side Nav is hidden */}
+        <AnimatePresence>
+          {!showSideNavbar && (
+            <motion.div
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -100, opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="z-[100] fixed top-0 w-full"
+            >
+              <TopNavbar />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <section id="home">
+          <Landing />
+        </section>
+
+        <section id="experience">
+          <ExperienceContextProvider>
+            {isMobile ? <ExperienceMobile /> : <Experience />}
+          </ExperienceContextProvider>
+        </section>
+
+        <section id="skills">
+          <SkillContextProvider>
+            <Skills />
+          </SkillContextProvider>
+        </section>
+        <section id="projects">
+          <ProjectContextProvider>
+            <Projects />
+          </ProjectContextProvider>
+        </section>
+        <section id="contact">
+          <ContactContextProvider>
+            <Contact />
+          </ContactContextProvider>
+        </section>
       </div>
       <Toaster />
     </>

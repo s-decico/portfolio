@@ -2,28 +2,34 @@ import React from "react";
 import TopNavbar from "../components/TopNavbar";
 import "../globals.scss";
 import Image from "next/image";
-import { ReactTyped } from "react-typed";
 import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
 
 const Landing = () => {
   return (
     <>
-      <div className="landing-container w-full h-dvh relative flex flex-col justify-center items-center">
-        <nav className="navbar-container absolute top-0 w-full h-20 flex justify-center">
-          <TopNavbar />
-        </nav>
-        <div className="landing-hero flex justify-between items-center w-full h-80 px-[10%] overflow-hidden absolute top-1/2 -translate-y-40">
-          <div className="hero-text flex flex-col text-5xl ">
-            {/* <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] min-h-14 ">
-              Idea to Online Impact
-            </div> */}
-            <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] min-h-14">
+      <div className="landing-container w-full h-dvh relative flex flex-col justify-center items-center overflow-hidden">
+        {/* Animated Background Blobs */}
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#6cb545] opacity-20 blur-[120px] rounded-full animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#6cb545] opacity-10 blur-[120px] rounded-full animate-pulse" />
+
+
+        <div className="landing-hero flex justify-between items-center w-full px-[10%] z-10 relative">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="hero-text flex flex-col"
+          >
+            <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] text-6xl md:text-7xl">
               <TypeAnimation
                 sequence={[
                   "Hi! I am Syamantak",
-                  1000,
-                  "Hi! I am a full stack developer",
-                  1000,
+                  2000,
+                  "Hi! I am a Full Stack Developer",
+                  2000,
+                  "Hi! I Build Digital Experiences",
+                  2000,
                 ]}
                 wrapper="div"
                 speed={50}
@@ -36,39 +42,70 @@ const Landing = () => {
               />
             </div>
 
-            <div
-              className="hero-text-bottom overflow-hidden text-[#323232] min-h-14 "
-              style={{
-                fontFamily: "Anton",
-              }}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="hero-text-bottom overflow-hidden text-white opacity-80 mt-4 text-2xl md:text-3xl font-light tracking-wider"
             >
-              Lets code your way online
+              Let's code your way online
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="mt-10"
+            >
+              <button 
+                className="button-submit"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                View My Work
+              </button>
+            </motion.div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1, ease: "backOut" }}
+            className="hero-avatar relative group"
+          >
+            <div className="absolute inset-0 bg-[#6cb545] rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+            <div className="relative p-1 bg-gradient-to-br from-[#6cb545] to-transparent rounded-full">
+              <Image
+                src="/dp.jpg"
+                alt="Display pic"
+                width={320}
+                height={320}
+                className="rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              />
             </div>
-          </div>
-          <div className="hero-avatar ">
-            <Image
-              src="/dp.jpg"
-              alt="Display pic"
-              width={280}
-              height={280}
-              className="rounded-full"
-            />
-          </div>
+          </motion.div>
         </div>
-        <div className="scroll-icon absolute bottom-0 left-1/2">
+
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="scroll-icon absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer z-10"
+          onClick={() => {
+            document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="w-8 h-8 text-[#323232]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-10 h-10 text-white opacity-30 hover:opacity-100 transition-opacity"
           >
-            <path
-              fillRule="evenodd"
-              d="M9.47 15.28a.75.75 0 0 0 1.06 0l4.25-4.25a.75.75 0 1 0-1.06-1.06L10 13.69 6.28 9.97a.75.75 0 0 0-1.06 1.06l4.25 4.25ZM5.22 6.03l4.25 4.25a.75.75 0 0 0 1.06 0l4.25-4.25a.75.75 0 0 0-1.06-1.06L10 8.69 6.28 4.97a.75.75 0 0 0-1.06 1.06Z"
-              clipRule="evenodd"
-            />
+            <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
           </svg>
-        </div>
+        </motion.div>
       </div>
     </>
   );

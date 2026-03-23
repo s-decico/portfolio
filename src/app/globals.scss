@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@100..900&display=swap"); /* Primary: 6cb545
-Secondary: 323232 
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@100..900&display=swap");
 
-green:[#6cb545]
-Font:Felix titling
-*/
+:root {
+  --primary: #6cb545;
+  --bg-dark: #0a0a0a;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+}
 
 * {
   margin: 0;
@@ -16,227 +20,181 @@ Font:Felix titling
   scroll-behavior: smooth;
   font-family: "Outfit", sans-serif;
 }
+
 body {
   min-width: 360px;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
 }
 
-.landing-container {
-  background: linear-gradient(to bottom, #323232 50%, #6cb545 50%);
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
 .heading-font {
-  font-family: "Anton" !important;
-  letter-spacing: 0.2rem;
+  font-family: "Anton", sans-serif !important;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .card-heading-font {
-  font-family: "Anton" !important;
+  font-family: "Anton", sans-serif !important;
 }
 
-.contact-form-container input:focus {
-  outline: none;
+.glass-morphism {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
 }
 
-.contact-form-container textarea:focus {
-  outline: none;
+.landing-container {
+  background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #0a0a0a 100%);
+  position: relative;
+  overflow: hidden;
 }
-.contact-form-container ::placeholder {
-  color: white;
-  font-weight: 100;
-  padding-left: 2px;
-  background: none;
-  color: inherit;
-}
-.contact-form-container textarea {
-  max-height: 128px;
+
+.landing-container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  pointer-events: none;
 }
 
 .button-submit {
-  font-family: sans-serif;
-  text-decoration: none;
-  color: #fff;
-  border: 2px solid #fff;
-  letter-spacing: 1px;
-  text-align: center;
   position: relative;
-  transition: all 0.35s;
-  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  z-index: 1;
 }
 
-.button-submit:after {
-  position: absolute;
+.button-submit::before {
   content: "";
+  position: absolute;
   top: 0;
-  left: 0;
-  width: 0;
+  left: -100%;
+  width: 100%;
   height: 100%;
-  background: #6cb545;
-  transition: all 0.35s;
+  background: var(--primary);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
 }
 
 .button-submit:hover {
-  color: #000;
+  color: white;
+  box-shadow: 0 0 20px rgba(108, 181, 69, 0.4);
 }
 
-.button-submit:hover:after {
-  width: 100%;
+.button-submit:hover::before {
+  left: 0;
 }
 
-.svg-icons {
-  fill: white;
-  transition: all 0.35s;
+.side-nav {
+  border-radius: 0 12px 12px 0;
+  border: 1px solid var(--glass-border);
+  border-left: none;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
 }
 
-.main-container {
-  min-width: 360px;
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.prj-img {
+  transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.project-card:hover .prj-img {
+  transform: scale(1.05);
 }
 
 @media screen and (max-width: 550px) {
-  body {
-    overflow-x: hidden;
-  }
-  .side-nav {
-    bottom: 0;
-    top: auto;
-    z-index: 100;
-    width: 100vw;
-    max-width: none;
-    background-color: #0000008c;
-    backdrop-filter: blur(10px);
-  }
-  .sidenav-icon-name {
-    // display: none;
-  }
-  .sidenav-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
-  .sidenav-icon-container {
-  }
 
   .landing-hero {
     flex-direction: column-reverse;
-    justify-content: space-around;
+    height: auto;
+    padding-top: 120px;
+    gap: 40px;
+  }
 
-    align-items: center;
-    height: max-content;
-    padding: 0;
-    margin: 0;
-    top: auto;
-    transform: none;
-    height: 100dvh;
-  }
   .hero-text {
-    font-size: 1.5rem;
-    z-index: 10;
+    font-size: 2.5rem;
+    text-align: center;
     align-items: center;
-    height: 100%;
   }
+
   .hero-avatar {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-avatar img {
+    width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    object-fit: cover;
   }
-  .hero-text-bottom,
-  .hero-text-top {
-    color: #323232;
-    min-height: auto;
+
+  .projects-container {
+    height: auto !important;
+    padding: 80px 20px;
   }
-  .scroll-icon {
-    bottom: 4.5rem;
-    transform: translateX(-10px);
-  }
-  .skills-container {
-    padding: 1rem;
-  }
-  .skill-heading {
-    margin-bottom: 2rem;
-  }
-  .skill-box {
-    width: 6rem;
-    height: 6rem;
-  }
-  .skill-img {
-    height: 3rem;
-  }
-  .skill-name {
-    font-size: 0.8rem;
+
+  .card-container {
+    position: relative !important;
+    top: 0 !important;
+    height: auto !important;
+    margin-bottom: 40px;
   }
 
   .project-card {
-    flex-direction: column-reverse;
-    padding: 0;
-    gap: 0rem;
-  }
-  .project-name {
-    font-size: 1.5rem;
-    padding-bottom: 1rem;
-  }
-  .project-tech {
-    font-size: 1rem;
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: column !important;
+    padding: 20px !important;
   }
 
   .project-details {
-    flex-grow: 2;
-    padding: 0rem 0.5rem 0rem 0.5rem;
+    width: 100% !important;
   }
+
   .project-image {
-    flex-grow: 1;
-    width: 100%;
-    height: 70%;
-    object-fit: fill;
-    padding: 1rem;
-  }
-  .project-details {
-    gap: 0rem;
-    width: 100%;
-  }
-  .project-description {
-    display: none;
-  }
-  .project-button {
-    margin-left: 0;
-    margin-top: 1rem;
-  }
-  .certificate-cards-container {
-    padding: 2rem;
-  }
-  .certificate-card {
-    min-width: 100%;
-  }
-  .contact-details {
-    flex-direction: column-reverse;
-    gap: 0;
-  }
-  .contact-form-container {
-    margin-top: 4rem;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-  .form-input {
-    width: 80%;
-  }
-  .form-heading {
-    display: none;
-  }
-  .vertical-divider {
-    display: none;
-  }
-  .contact-info {
-    width: 100%;
-    align-items: center;
-    gap: 0.5rem;
-    padding-bottom: 4rem;
-  }
-  .contact-hero-text {
-    margin-top: 2rem;
-  }
-  .contact-hero-text-top {
-    padding-left: 0.3rem;
-  }
-  .contact-hero-text-bottom {
-    display: none;
+    width: 100% !important;
+    height: 250px !important;
+    margin-top: 20px;
   }
 }

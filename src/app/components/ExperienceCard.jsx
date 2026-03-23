@@ -1,88 +1,65 @@
 import React from "react";
 import "../globals.scss";
+import { motion } from "framer-motion";
 
-const ExperienceCard = ({ experience }, key) => {
+const ExperienceCard = ({ experience }) => {
   const { companyname, designation, skills, from, to, companylogo, details } =
     experience;
-  const { skillname, logo } = skills;
-  let parsedFromDate = new Date(from);
-  let fromMonth = parsedFromDate.getMonth() + 1;
-  let fromYear = parsedFromDate.getFullYear();
-  let parsedToDate;
-  let toMonth;
-  let toYear;
-  if (to !== "Present") {
-    parsedToDate = new Date(to);
-    toMonth = parsedToDate.getMonth() + 1;
-    toYear = parsedToDate.getFullYear();
-  }
+
+  const formatDate = (dateStr) => {
+    if (dateStr === "Present") return "Present";
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  };
 
   return (
-    <>
-      <div
-        className=" relative bg-[#5d5959] w-[80vw] h-[90%] p-10 flex flex-col gap-8 text-white overflow-y-hidden"
-        key={key}
-        id={key}
-      >
-        <div className="experience-logo flex justify-between items-center h-36 p-4 bg-[#00000036] rounded-lg border-2 border-[#6cb545]">
-          <div className="company-name-designation flex flex-col justify-around">
-            <div className="company-name card-heading-font text-5xl">
-              {companyname != null && companyname}
-            </div>
-            <div className="exp-card-designation text-xl pl-[2px] pt-2">
-              {designation != null && designation}
-            </div>
-            <div className="exp-dates ">
-              {fromMonth != null && fromMonth}/{fromYear != null && fromYear} -{" "}
-              {to == "Present"
-                ? to
-                : `${toMonth != null && toMonth} / ${toYear != null && toYear}`}
-            </div>
-          </div>
-          <div className="company-logo w-28 h-28 object-fill  flex flex-col items-center justify-center">
-            <img src={companylogo != null && companylogo} alt="" />
-          </div>
+    <div className="glass-morphism p-8 md:p-12 w-full h-full flex flex-col gap-8 transition-all duration-300 hover:border-[#6cb545] group">
+      <div className="flex justify-between items-start">
+        <div className="flex flex-col gap-2">
+          <h3 className="card-heading-font text-4xl md:text-5xl text-[#6cb545] tracking-tight">
+            {companyname}
+          </h3>
+          <p className="text-xl md:text-2xl font-medium text-white/90">
+            {designation}
+          </p>
+          <p className="text-sm md:text-md text-white/50 font-light mt-1 uppercase tracking-widest">
+            {formatDate(from)} — {formatDate(to)}
+          </p>
         </div>
-        <div className="experience-details flex flex-col gap-2">
-          <div className="exp-card-skills-container flex gap-2 text-2xl ">
-            {skills.map((skill, index) => {
-              if (skill) {
-                return (
-                  <div
-                    className="exp-card-skills p-2 border-2 border-[#6cb545] bg-[#00000036] rounded-lg"
-                    key={index}
-                  >
-                    {skill.skillname}
-                  </div>
-                );
-              }
-            })}
+        {companylogo && (
+          <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-xl p-3 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-500">
+            <img 
+              src={companylogo} 
+              alt={companyname} 
+              className="w-full h-full object-contain filter brightness-110"
+            />
           </div>
-          <div className="exp-card-details flex flex-col gap-2 p-2 border-2 border-[#6cb545] bg-[#00000036] rounded-lg">
-            {details.map((detail, index) => {
-              if (detail) {
-                return (
-                  <div
-                    className="exp-card-details flex gap-2 text-white"
-                    key={index}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 448 512"
-                      className="w-4"
-                      fill="white"
-                    >
-                      <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" />
-                    </svg>
-                    {detail}
-                  </div>
-                );
-              }
-            })}
-          </div>
-        </div>
+        )}
       </div>
-    </>
+
+      <div className="flex flex-wrap gap-2">
+        {skills.map((skill, index) => (
+          <span
+            key={index}
+            className="px-3 py-1 text-xs font-semibold bg-white/5 border border-white/10 rounded-full text-white/70 group-hover:border-[#6cb545]/30 group-hover:text-[#6cb545] transition-colors"
+          >
+            {skill.skillname}
+          </span>
+        ))}
+      </div>
+
+      <div className="space-y-4 overflow-y-auto pr-2 custom-scrollbar">
+        {details.map((detail, index) => (
+          <div
+            key={index}
+            className="flex gap-4 text-white/70 text-base md:text-lg leading-relaxed"
+          >
+            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#6cb545] shrink-0" />
+            <p>{detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

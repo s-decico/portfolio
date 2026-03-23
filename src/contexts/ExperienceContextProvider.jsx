@@ -11,29 +11,29 @@ const ExperienceContextProvider = ({ children }) => {
       skills: [
         {
           skillname: "React",
-          logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+          logo: "https://skillicons.dev/icons?i=react",
         },
         {
           skillname: "TypeScript",
-          logo: "https://static-00.iconduck.com/assets.00/typescript-plain-icon-256x256-ypojgpyj.png",
+          logo: "https://skillicons.dev/icons?i=ts",
         },
         {
           skillname: "Node",
-          logo: "https://www.svgrepo.com/show/331488/mongodb.svg",
+          logo: "https://skillicons.dev/icons?i=nodejs",
         },
         {
           skillname: "MongoDB",
-          logo: "https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png",
+          logo: "https://skillicons.dev/icons?i=mongodb",
         },
         {
           skillname: "ExpressJs",
-          logo: "https://adware-technologies.s3.amazonaws.com/uploads/technology/thumbnail/20/express-js.png",
+          logo: "https://skillicons.dev/icons?i=express",
         },
       ],
       from: "Dec-2024",
       to: "Present",
       companylogo:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOb0W_vzx_kj-Ty0DDoRHMf1k7MFpajnMKVA&s",
+        "https://cdn.worldvectorlogo.com/logos/infosys.svg",
       details: [
         "Collaborated with UI/UX and Product teams to launch new features and optimize application performance.",
         "Engineered an OAuth 2.0 system with test-user mapping, enhancing audit traceability and developer security.",
@@ -50,29 +50,29 @@ const ExperienceContextProvider = ({ children }) => {
       skills: [
         {
           skillname: "React",
-          logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+          logo: "https://skillicons.dev/icons?i=react",
         },
         {
           skillname: "TypeScript",
-          logo: "https://static-00.iconduck.com/assets.00/typescript-plain-icon-256x256-ypojgpyj.png",
+          logo: "https://skillicons.dev/icons?i=ts",
         },
         {
           skillname: "C#",
-          logo: "https://static-00.iconduck.com/assets.00/c-sharp-c-icon-1822x2048-wuf3ijab.png",
+          logo: "https://skillicons.dev/icons?i=cs",
         },
         {
           skillname: "REST APIs",
-          logo: "https://media.licdn.com/dms/image/D4D12AQEeNNHq05k7MA/article-cover_image-shrink_720_1280/0/1687786979245?e=2147483647&v=beta&t=AVc2G-hvHNjTMklQtEt6qlby2l79Bf5dBBkUB5DBRe0",
+          logo: "https://skillicons.dev/icons?i=postman",
         },
         {
           skillname: "OAuth",
-          logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhh7jt2KAnGn2VSYB9P-Z5ETReMXwsWowkwA&s",
+          logo: "https://cdn.simpleicons.org/auth0",
         },
       ],
       from: "Oct-2023",
       to: "Dec-2023",
       companylogo:
-        "https://upload.wikimedia.org/wikipedia/commons/5/5a/Logo_Cognizant.png",
+        "https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Cognizant.svg",
       details: [
         "Reduced react app load time by 40% by implementing lazy loading and memoization(caching)",
         "Integrated OAuth for better security and enhance user experience and increase signup rates by 40%",
@@ -89,31 +89,31 @@ const ExperienceContextProvider = ({ children }) => {
       skills: [
         {
           skillname: "React",
-          logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+          logo: "https://skillicons.dev/icons?i=react",
         },
 
         {
           skillname: "TypeScript",
-          logo: "https://static-00.iconduck.com/assets.00/typescript-plain-icon-256x256-ypojgpyj.png",
+          logo: "https://skillicons.dev/icons?i=ts",
         },
 
         {
           skillname: "JavaScript",
-          logo: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+          logo: "https://skillicons.dev/icons?i=js",
         },
         {
           skillname: "C#",
-          logo: "https://static-00.iconduck.com/assets.00/c-sharp-c-icon-1822x2048-wuf3ijab.png",
+          logo: "https://skillicons.dev/icons?i=cs",
         },
         {
           skillname: "Powershell",
-          logo: "https://cdn.iconscout.com/icon/free/png-256/free-powershell-3521649-2945093.png",
+          logo: "https://skillicons.dev/icons?i=powershell",
         },
       ],
       from: "Aug-2022",
       to: "Aug-2023",
       companylogo:
-        "https://upload.wikimedia.org/wikipedia/commons/5/5a/Logo_Cognizant.png",
+        "https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Cognizant.svg",
       details: [
         "Delivered Azure Webjob to automate user task saving $5000/month",
         "Implemented middlewares to increase security and handle business logics",
@@ -129,11 +129,11 @@ const ExperienceContextProvider = ({ children }) => {
       skills: [
         {
           skillname: "React",
-          logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+          logo: "https://skillicons.dev/icons?i=react",
         },
         {
           skillname: "JavaScript",
-          logo: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+          logo: "https://skillicons.dev/icons?i=js",
         },
       ],
       from: "Aug-2021",

@@ -6,73 +6,59 @@ const SkillContextProvider = ({ children }) => {
   const [Skills, setSkills] = useState([
     {
       skillName: "NextJS",
-      logoURL:
-        "https://www.rlogical.com/wp-content/uploads/2023/03/Rlogical-Blog-Images-thumbnail.webp",
+      logoURL: "https://skillicons.dev/icons?i=nextjs",
     },
     {
       skillName: "React",
-      logoURL:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+      logoURL: "https://skillicons.dev/icons?i=react",
     },
-
     {
       skillName: "NodeJS",
-      logoURL: "https://www.svgrepo.com/show/303360/nodejs-logo.svg",
+      logoURL: "https://skillicons.dev/icons?i=nodejs",
     },
     {
       skillName: "ExpressJs",
-      logoURL: "https://img.icons8.com/office80/1200/express-js.jpg",
+      logoURL: "https://skillicons.dev/icons?i=express",
     },
     {
       skillName: "MongoDB",
-      logoURL: "https://www.svgrepo.com/show/331488/mongodb.svg",
+      logoURL: "https://skillicons.dev/icons?i=mongodb",
     },
     {
       skillName: "JWT",
-      logoURL: "https://logo.svgcdn.com/logos/jwt.png",
+      logoURL: "https://cdn.simpleicons.org/jsonwebtokens",
     },
     {
       skillName: "OAuth",
-      logoURL:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Oauth_logo.svg/500px-Oauth_logo.svg.png",
+      logoURL: "https://cdn.simpleicons.org/auth0",
     },
     {
       skillName: "HTML",
-      logoURL:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/800px-HTML5_Badge.svg.png",
+      logoURL: "https://skillicons.dev/icons?i=html",
     },
     {
       skillName: "CSS",
-      logoURL:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/768px-CSS3_logo.svg.png",
+      logoURL: "https://skillicons.dev/icons?i=css",
     },
     {
       skillName: "Tailwind CSS",
-      logoURL: "https://www.svgrepo.com/show/374118/tailwind.svg",
+      logoURL: "https://skillicons.dev/icons?i=tailwind",
     },
-    // {
-    //   skillName: "Framer Motion",
-    //   logoURL:
-    //     "https://seeklogo.com/images/F/framer-motion-logo-DA1E33CAA1-seeklogo.com.png",
-    // },
     {
       skillName: "TypeScript",
-      logoURL: "https://cdn-icons-png.flaticon.com/512/5968/5968381.png",
+      logoURL: "https://skillicons.dev/icons?i=typescript",
     },
     {
       skillName: "JavaScript",
-      logoURL:
-        "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+      logoURL: "https://skillicons.dev/icons?i=javascript",
     },
     {
       skillName: "C++",
-      logoURL:
-        "https://juststickers.in/wp-content/uploads/2016/09/c-plus-plus.png",
+      logoURL: "https://skillicons.dev/icons?i=cpp",
     },
     {
       skillName: "C#",
-      logoURL:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_C_sharp.svg/1067px-Logo_C_sharp.svg.png",
+      logoURL: "https://skillicons.dev/icons?i=cs",
     },
   ]);
 

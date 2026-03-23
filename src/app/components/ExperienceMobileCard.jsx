@@ -1,59 +1,33 @@
 import React from "react";
 
-const ExperienceMobileCard = ({ experience }, key) => {
-  const { companyname, designation, skills, from, to, companylogo, details } =
-    experience;
+const ExperienceMobileCard = ({ experience }) => {
+  const { companyname, designation, skills, from, to, companylogo } = experience;
 
-  let parsedFromDate = new Date(from);
-  let fromMonth = parsedFromDate.getMonth() + 1;
-  let fromYear = parsedFromDate.getFullYear();
-  let parsedToDate;
-  let toMonth;
-  let toYear;
-  if (to !== "Present") {
-    parsedToDate = new Date(to);
-    toMonth = parsedToDate.getMonth() + 1;
-    toYear = parsedToDate.getFullYear();
-  }
+  const formatDate = (dateStr) => {
+    if (dateStr === "Present") return "Present";
+    const date = new Date(dateStr);
+    return `${date.getMonth() + 1}/${date.getFullYear()}`;
+  };
+
   return (
-    <div className="exp-mobile-card flex flex-col text-[#323232] p-8 overflow-hidden">
-      <div className="exp-mobile-company-details flex flex-col gap-2 justify-between items-center">
-        <div className="exp-mobile-company-logo w-40 h-40 rounded-full overflow-hidden">
-          <img src={companylogo != null && companylogo} alt="" />
-        </div>
-        <div className="exp-mobile-company-name card-heading-font text-5xl py-6">
-          {companyname != null && companyname}
-        </div>
+    <div className="flex flex-col items-center w-full text-white">
+      <div className="w-24 h-24 rounded-2xl overflow-hidden bg-white/10 p-2 mb-6 shadow-lg">
+        {companylogo && <img src={companylogo} alt={companyname} className="w-full h-full object-contain" />}
       </div>
-      <div className="exp-mobile-company-designation text-3xl pt-2 pb-1 flex justify-center items-center text-center">
-        {designation != null && designation}
-      </div>
-      <div className="exp-mobile-company-date flex justify-center items-center pb-10">
-        {fromMonth != null && fromMonth}/{fromYear != null && fromYear} -{" "}
-        {to == "Present"
-          ? to
-          : `${toMonth != null && toMonth} / ${toYear != null && toYear}`}
-      </div>
-      <div className="exp-mobile-company-skills flex justify-center items-center gap-2 flex-wrap">
-        {skills.map((skill, index) => {
-          if (skill) {
-            return (
-              <div
-                className="skill-bubble flex flex-col items-center justify-center gap-2 text-center w-10"
-                key={index}
-              >
-                <img
-                  src={skill.logo}
-                  alt=""
-                  className="w-10 h-10 border-2 border-white rounded-full"
-                />
-                <div className="skill-bubble-text text-[0.5rem]">
-                  {skill.skillname}
-                </div>
-              </div>
-            );
-          }
-        })}
+      
+      <h3 className="card-heading-font text-3xl text-center mb-2">{companyname}</h3>
+      <p className="text-[#6cb545] text-lg font-medium text-center mb-1">{designation}</p>
+      <p className="text-white/40 text-sm mb-8">{formatDate(from)} — {formatDate(to)}</p>
+
+      <div className="flex flex-wrap justify-center gap-4 w-full">
+        {skills.map((skill, index) => (
+          <div key={index} className="flex flex-col items-center gap-2">
+            <div className="w-10 h-10 rounded-xl glass-morphism border-white/10 p-2 flex items-center justify-center">
+              <img src={skill.logo} alt={skill.skillname} className="w-full h-full object-contain" />
+            </div>
+            <span className="text-[10px] text-white/50">{skill.skillname}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

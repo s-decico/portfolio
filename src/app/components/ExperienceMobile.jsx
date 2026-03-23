@@ -1,14 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
-import { delay, motion, useMotionValue } from "framer-motion";
+import React, { useState, useContext } from "react";
+import { motion, useMotionValue } from "framer-motion";
 import ExperienceMobileCard from "./ExperienceMobileCard";
 import ExperienceContext from "@/contexts/ExperienceContext";
 import "../globals.scss";
-
-const imgs = ["/imgs/nature/1.jpg", "/imgs/nature/2.jpg", "/imgs/nature/3.jpg"];
-
-const ONE_SECOND = 2000;
-const AUTO_DELAY = ONE_SECOND * 10;
-const DRAG_BUFFER = 20;
 
 const SPRING_OPTIONS = {
   type: "spring",
@@ -22,111 +16,51 @@ export const ExperienceMobile = () => {
   const ExperienceObj = useContext(ExperienceContext);
   const dragX = useMotionValue(0);
 
-  // useEffect(() => {
-  //   const intervalRef = setInterval(() => {
-  //     const x = dragX.get();
-
-  //     if (x === 0) {
-  //       setImgIndex((pv) => {
-  //         if (pv === imgs.length - 1) {
-  //           return 0;
-  //         }
-  //         return pv + 1;
-  //       });
-  //     }
-  //   }, AUTO_DELAY);
-
-  //   return () => clearInterval(intervalRef);
-  // }, []);
-
   const onDragEnd = () => {
     const x = dragX.get();
-
-    if (x <= -DRAG_BUFFER && imgIndex < imgs.length - 1) {
+    if (x <= -20 && imgIndex < ExperienceObj.length - 1) {
       setImgIndex((pv) => pv + 1);
-    } else if (x >= DRAG_BUFFER && imgIndex > 0) {
+    } else if (x >= 20 && imgIndex > 0) {
       setImgIndex((pv) => pv - 1);
     }
   };
 
-  const Images = ({ imgIndex }) => {
-    return (
-      <>
-        {ExperienceObj.map((experience, index) => {
-          return (
-            <motion.div
-              key={index}
-              // style={{
-              //   backgroundImage: `url(${imgSrc})`,
-              //   backgroundSize: "cover",
-              //   backgroundPosition: "center",
-              // }}
-              // animate={{
-              //   scale: imgIndex === idx ? 0.95 : 0.85,
-              // }}
-              transition="ease"
-              className="h-[70vh] scale-90 w-screen shrink-0 rounded-xl bg-[#6cb545] object-cover"
-            >
-              <ExperienceMobileCard experience={experience} key={index} />
-            </motion.div>
-          );
-        })}
-      </>
-    );
-  };
-
-  const Dots = ({ imgIndex, setImgIndex }) => {
-    return (
-      <div className=" flex w-full justify-center gap-2">
-        {ExperienceObj.map((_, idx) => {
-          return (
-            <button
-              key={idx}
-              onClick={() => setImgIndex(idx)}
-              className={`h-3 w-3 rounded-full transition-colors ${
-                idx === imgIndex ? "bg-neutral-50" : "bg-neutral-500"
-              }`}
-            />
-          );
-        })}
-      </div>
-    );
-  };
-
   return (
-    <div className="relative overflow-x-hidden h-dvh bg-[#323232]">
-      <div className="exp-mobile-heading heading-font flex justify-center items-center text-5xl text-white pt-4">
-        EXPERIENCE
+    <div className="relative overflow-hidden w-full py-20 px-4">
+      <div className="flex flex-col items-center mb-10">
+        <h2 className="heading-font text-5xl text-white">EXPERIENCE</h2>
+        <div className="w-16 h-1 bg-[#6cb545] mt-2 rounded-full" />
       </div>
+
       <motion.div
         drag="x"
-        dragConstraints={{
-          left: 0,
-          right: 0,
-        }}
-        style={{
-          x: dragX,
-        }}
-        animate={{
-          translateX: `-${imgIndex * 100}%`,
-        }}
+        dragConstraints={{ left: 0, right: 0 }}
+        style={{ x: dragX }}
+        animate={{ translateX: `-${imgIndex * 100}%` }}
         transition={SPRING_OPTIONS}
         onDragEnd={onDragEnd}
-        className="flex cursor-grab items-center active:cursor-grabbing"
+        className="flex cursor-grab items-stretch active:cursor-grabbing"
       >
-        <Images imgIndex={imgIndex} />
+        {ExperienceObj.map((experience, index) => (
+          <div key={index} className="w-full shrink-0 px-2 flex">
+            <div className="glass-morphism w-full p-6 flex flex-col items-center border-white/5 shadow-xl">
+              <ExperienceMobileCard experience={experience} />
+            </div>
+          </div>
+        ))}
       </motion.div>
 
-      <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} />
+      <div className="flex justify-center gap-3 mt-8">
+        {ExperienceObj.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setImgIndex(idx)}
+            className={`h-2 transition-all duration-300 rounded-full ${
+              idx === imgIndex ? "w-8 bg-[#6cb545]" : "w-2 bg-white/20"
+            }`}
+          />
+        ))}
+      </div>
     </div>
-  );
-};
-
-const GradientEdges = () => {
-  return (
-    <>
-      <div className="pointer-events-none absolute bottom-0 left-0 top-0 w-[10vw] max-w-[100px] bg-gradient-to-r from-neutral-950/50 to-neutral-950/0" />
-      <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-[10vw] max-w-[100px] bg-gradient-to-l from-neutral-950/50 to-neutral-950/0" />
-    </>
   );
 };

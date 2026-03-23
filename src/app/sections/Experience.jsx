@@ -4,7 +4,6 @@ import { motion, useTransform, useScroll } from "framer-motion";
 import "../globals.scss";
 import ExperienceContext from "@/contexts/ExperienceContext";
 import ExperienceCard from "../components/ExperienceCard";
-import HorizontalScrollCarousel from "./Scroll";
 
 const Experience = () => {
   const targetRef = useRef(null);
@@ -12,26 +11,41 @@ const Experience = () => {
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-68%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
 
   const ExperienceObj = useContext(ExperienceContext);
   return (
     <>
       <div
         ref={targetRef}
-        className="experience-container relative h-[300vh] bg-[#323232]"
+        id="experience"
+        className="experience-container relative h-[300vh] bg-transparent"
       >
-        <div className="experience-card-container sticky top-0 h-screen flex items-center overflow-hidden pt-16 ">
-          <div className="section-heading heading-font top-0 mx-10 text-5xl -rotate-90 text-white">
-            EXPERIENCE
+        <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+          <div className="absolute top-20 left-10 z-10">
+            <h2 className="heading-font text-8xl opacity-10 select-none">
+              EXPERIENCE
+            </h2>
           </div>
+          
           <motion.div
-            className="exp-cards h-full flex gap-8 p-4 w-max pl-20"
+            className="flex gap-12 px-[10%] w-max"
             style={{ x }}
           >
             {ExperienceObj.map((experience, index) => {
               if (experience) {
-                return <ExperienceCard experience={experience} key={index} />;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="w-[75vw] md:w-[60vw]"
+                  >
+                    <ExperienceCard experience={experience} />
+                  </motion.div>
+                );
               }
             })}
           </motion.div>
@@ -42,3 +56,4 @@ const Experience = () => {
 };
 
 export default Experience;
+

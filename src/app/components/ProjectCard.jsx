@@ -2,12 +2,9 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import "../globals.scss";
-import { list } from "postcss";
-import Image from "next/image";
 
 const ProjectCard = ({
   i,
-  color,
   progress,
   range,
   targetScale,
@@ -15,11 +12,9 @@ const ProjectCard = ({
   projectLinkFlag,
   projectLink,
   projectTechStack,
-  date,
   projectPicture,
   projectDescription,
 }) => {
-  // console.log("Index:", projectLink);
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -28,69 +23,79 @@ const ProjectCard = ({
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
-  //const opacity = useTransform(progress, range, [1, 0.5]);
+
   return (
-    <>
-      <div
-        ref={container}
-        className="card-container h-dvh flex justify-center items-center sticky top-10"
+    <div
+      ref={container}
+      className="project-card-wrapper h-screen flex justify-center items-center sticky top-0 w-full"
+    >
+      <motion.div
+        style={{
+          scale,
+          top: `calc(${i * 20}px)`,
+        }}
+        className="project-card group/card glass-morphism w-[90vw] md:w-[80vw] h-[80vh] md:h-[70vh] flex flex-col md:flex-row items-center overflow-hidden border-white/5 shadow-2xl relative"
       >
-        <motion.div
-          style={{
-            backgroundColor: color,
-            scale,
-            // opacity: opacity,
-            top: `calc(${i * 25}px)`,
-          }}
-          className="project-card relative w-[80vw] h-[70vh]  flex items-center justify-center px-10 gap-5 origin-top shadow-lg"
-        >
-          <div className="project-details overflow-hidden  w-[60%] h-[80%] flex flex-col items-start gap-2">
-            <div className="project-name card-heading-font text-4xl pb-10">
+        <div className="p-8 md:p-12 w-full md:w-1/2 flex flex-col gap-6 h-full justify-start overflow-y-auto">
+          <div className="flex flex-col gap-2">
+            <span className="text-[#6cb545] font-mono text-sm tracking-widest uppercase">
+              Project {i + 1}
+            </span>
+            <h3 className="card-heading-font text-5xl md:text-6xl text-white">
               {projectName}
-            </div>
-            <div className="project-tech flex gap-2 flex-wrap">
-              {projectTechStack.map((tech, index) => {
-                if (tech) {
-                  return (
-                    <div className="bg-[#00000030] p-1 rounded-sm" key={index}>
-                      {tech}
-                    </div>
-                  );
-                }
-              })}
-            </div>
-            <div className="project-description list-style-type: none">
-              {projectDescription.map((x, i) => {
-                if (x) {
-                  return <li key={i}>{x}</li>;
-                }
-              })}
-            </div>
-            {projectLinkFlag && (
-              <button
-                onClick={() => {
-                  if (projectLink) {
-                    window.open(projectLink, "_blank", "noopener noreferrer");
-                  }
-                }}
-                className="project-button bg-black ml-2 p-2 hover:scale-105 transition-all delay-50 ease-out"
+            </h3>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {projectTechStack.map((tech, index) => (
+              <span 
+                key={index} 
+                className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-white/70"
               >
-                Go to Project
-              </button>
-            )}
+                {tech}
+              </span>
+            ))}
           </div>
-          <div className="project-image relative w-[40%] h-full overflow-hidden flex justify-center items-center object-cover">
-            <motion.div className="w-full" style={{ scale: imageScale }}>
-              <img
-                src={projectPicture}
-                alt=""
-                className=" prj-img object-cover w-full h-full"
-              />
-            </motion.div>
+
+          <div className="flex flex-col gap-3 text-white/70 text-base md:text-lg">
+            {projectDescription.map((item, idx) => (
+              <div key={idx} className="flex gap-2">
+                <span className="text-[#6cb545] mt-1">•</span>
+                <p>{item}</p>
+              </div>
+            ))}
           </div>
-        </motion.div>
-      </div>
-    </>
+
+        </div>
+
+        <div className="w-full md:w-1/2 h-full overflow-hidden bg-black/20 relative">
+          <motion.div 
+            className="w-full h-full" 
+            style={{ scale: imageScale }}
+          >
+            <img
+              src={projectPicture}
+              alt={projectName}
+              className="prj-img w-full h-full object-cover grayscale-[0.5] group-hover/card:grayscale-0 group-hover/card:blur-md transition-all duration-700"
+            />
+          </motion.div>
+          {projectLinkFlag && (
+            <div className="absolute inset-0 bg-black/0 group-hover/card:bg-black/60 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-all duration-500 pointer-events-none z-10">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (projectLink) window.open(projectLink, "_blank");
+                }}
+                className="button-submit pointer-events-auto shadow-2xl shadow-black/50 border-white/20"
+              >
+                View Project
+              </motion.button>
+            </div>
+          )}
+        </div>
+      </motion.div>
+    </div>
   );
 };
 

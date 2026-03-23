@@ -1,25 +1,21 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "../globals.scss";
-import { motion, useTransform, useScroll } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const TopNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const navbarMenus = [
-    { label: "Home", id: "home", navid: "navHome" },
-    { label: "Experience", id: "experience", navid: "navExperience" },
-    { label: "Skills", id: "skills", navid: "navSkills" },
-    { label: "Projects", id: "projects", navid: "navProjects" },
-    // {
-    //   label: "Certifications",
-    //   id: "certifications",
-    //   navid: "navcertifications",
-    // },
-    { label: "Contact", id: "contact", navid: "navcontact" },
+    { label: "Home", id: "home" },
+    { label: "Experience", id: "experience" },
+    { label: "Skills", id: "skills" },
+    { label: "Projects", id: "projects" },
+    { label: "Contact", id: "contact" },
   ];
 
-  const scrollToSection = (id, event) => {
+  const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
@@ -27,111 +23,71 @@ const TopNavbar = () => {
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 900) {
-        setIsOpen(false);
-      }
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
     };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <>
-      <div className="navbar-container">
-        <div className="navbar-menus flex justify-evenly items-center w-1/2 h-full gap-6 ">
-          {navbarMenus.map((item, index) => (
-            <div
-              className="navbar-item box-border p-3 text-white text-lg transition ease-in-out delay-50 hover:text-[#6cb545] hover:cursor-pointer hover:border-b-2 border-[#6cb545] origin-center focus:text-[#993a3a]"
-              id={item.navid}
-              key={index}
-              onClick={(event) => scrollToSection(item.id, event)}
+    <nav 
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 ${
+        scrolled ? "w-[90%] md:w-max" : "w-[95%] md:w-max"
+      }`}
+    >
+      <div className="glass-morphism px-8 py-4 flex items-center justify-between gap-12 border-white/5 shadow-2xl">
+        <div className="text-[#6cb545] font-bold tracking-tighter text-2xl select-none">
+          SYAMANTAK<span className="text-white">.</span>
+        </div>
+
+        <div className="hidden md:flex items-center gap-8">
+          {navbarMenus.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className="text-sm font-medium text-white/60 hover:text-[#6cb545] transition-colors relative group"
             >
               {item.label}
-            </div>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#6cb545] transition-all duration-300 group-hover:w-full" />
+            </button>
           ))}
         </div>
-        <div className="hamburger-menu" onClick={() => setIsOpen(!isOpen)}>
-          <div className={`bar ${isOpen ? "open" : ""}`}></div>
-          <div className={`bar ${isOpen ? "open" : ""}`}></div>
-          <div className={`bar ${isOpen ? "open" : ""}`}></div>
-        </div>
+
+        <button 
+          className="md:hidden text-white"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />
+          </svg>
+        </button>
+      </div>
+
+      <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ height: 0 }}
-            animate={{ height: "auto" }}
-            className="collapsible-navbar w-90% bg-[#00000076] z-20"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden absolute top-full left-0 right-0 mt-4 glass-morphism p-6 flex flex-col gap-4 border-white/5 shadow-2xl"
           >
-            {navbarMenus.map((item, index) => (
-              <div
-                className="navbar-item box-border p-3 text-white text-lg transition ease-in-out delay-50 hover:text-[#6cb545] hover:cursor-pointer hover:border-b-2 border-[#6cb545] origin-center focus:text-[#993a3a]"
-                id={item.navid}
-                key={index}
-                onClick={(event) => {
-                  scrollToSection(item.id, event);
+            {navbarMenus.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => {
+                  scrollToSection(item.id);
                   setIsOpen(false);
                 }}
+                className="text-left py-2 text-lg text-white/80 hover:text-[#6cb545] transition-colors"
               >
                 {item.label}
-              </div>
+              </button>
             ))}
           </motion.div>
         )}
-      </div>
-      <style jsx>{`
-        .navbar-container {
-          position: relative;
-        }
-        .hamburger-menu {
-          display: none;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-          cursor: pointer;
-          z-index: 10; /* Ensure it is above other elements */
-        }
-        .bar {
-          width: 25px;
-          height: 3px;
-          background-color: white;
-          margin: 4px 0;
-          transition: 0.4s;
-        }
-        .bar.open:nth-child(1) {
-          transform: rotate(-45deg) translate(-8px, 6px);
-        }
-        .bar.open:nth-child(2) {
-          opacity: 0;
-        }
-        .bar.open:nth-child(3) {
-          transform: rotate(45deg) translate(-8px, -6px);
-        }
-        .collapsible-navbar {
-          overflow: hidden;
-          position: absolute; /* Ensure it doesn't push other content */
-          top: 0;
-          left: 0;
-          width: 100%;
-          z-index: 20; /* Increase z-index to ensure it is above other elements */
-        }
-        @media (max-width: 900px) {
-          .navbar-menus {
-            display: none;
-          }
-          .hamburger-menu {
-            display: flex;
-            z-index: 10;
-          }
-        }
-        @media (max-width: 550px) {
-          .hamburger-menu {
-            display: none;
-          }
-        }
-      `}</style>
-    </>
+      </AnimatePresence>
+    </nav>
   );
 };
 
