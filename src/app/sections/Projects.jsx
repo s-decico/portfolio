@@ -3,6 +3,7 @@ import React, { useContext, useRef } from "react";
 import { useScroll } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
 import ProjectContext from "@/contexts/ProjectContext";
+import { SECTION_HEADINGS } from "@/constants";
 
 const Projects = () => {
   const container = useRef(null);
@@ -20,7 +21,7 @@ const Projects = () => {
     >
       <div className="sticky top-20 z-0 opacity-10 pointer-events-none">
         <h2 className="heading-font text-8xl md:text-[15rem] leading-none">
-          PROJECTS
+          {SECTION_HEADINGS.PROJECTS}
         </h2>
       </div>
 

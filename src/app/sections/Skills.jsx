@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import SkillContext from "@/contexts/SkillContext";
 import SkillCard from "../components/SkillCard";
 import { motion } from "framer-motion";
+import { SECTION_HEADINGS } from "@/constants";
 
 const Skills = () => {
   const skillObj = useContext(SkillContext);
@@ -20,7 +21,7 @@ const Skills = () => {
           className="flex flex-col items-center mb-20"
         >
           <h2 className="heading-font text-6xl md:text-7xl text-center">
-            TECHNICAL TOOLS
+            {SECTION_HEADINGS.SKILLS}
           </h2>
           <div className="w-24 h-1 bg-[#6cb545] mt-4 rounded-full" />
         </motion.div>

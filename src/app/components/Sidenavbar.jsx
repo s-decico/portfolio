@@ -1,15 +1,20 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
+import { NAVBAR_MENUS } from "@/constants";
 
 const SideNavbar = ({ showSideNavbar, activeSectionId }) => {
-  const navbarMenus = [
-    { label: "Home", id: "home", icon: <HomeIcon /> },
-    { label: "Experience", id: "experience", icon: <BriefcaseIcon /> },
-    { label: "Skills", id: "skills", icon: <CpuIcon /> },
-    { label: "Projects", id: "projects", icon: <FolderIcon /> },
-    { label: "Contact", id: "contact", icon: <MailIcon /> },
-  ];
+  const iconMap = {
+    home: <HomeIcon />,
+    experience: <BriefcaseIcon />,
+    skills: <CpuIcon />,
+    projects: <FolderIcon />,
+    contact: <MailIcon />
+  };
+  const navbarMenus = NAVBAR_MENUS.map(menu => ({
+    ...menu,
+    icon: iconMap[menu.id]
+  }));
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);

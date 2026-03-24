@@ -4,6 +4,7 @@ import { motion, useTransform, useScroll } from "framer-motion";
 import "../globals.scss";
 import ExperienceContext from "@/contexts/ExperienceContext";
 import ExperienceCard from "../components/ExperienceCard";
+import { SECTION_HEADINGS } from "@/constants";
 
 const Experience = () => {
   const targetRef = useRef(null);
@@ -24,7 +25,7 @@ const Experience = () => {
         <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
           <div className="absolute top-20 left-10 z-10">
             <h2 className="heading-font text-8xl opacity-10 select-none">
-              EXPERIENCE
+              {SECTION_HEADINGS.EXPERIENCE}
             </h2>
           </div>
           

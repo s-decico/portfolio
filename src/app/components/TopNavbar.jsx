@@ -2,18 +2,13 @@
 import React, { useState, useEffect } from "react";
 import "../globals.scss";
 import { motion, AnimatePresence } from "framer-motion";
+import { NAVBAR_MENUS } from "@/constants";
 
 const TopNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const navbarMenus = [
-    { label: "Home", id: "home" },
-    { label: "Experience", id: "experience" },
-    { label: "Skills", id: "skills" },
-    { label: "Projects", id: "projects" },
-    { label: "Contact", id: "contact" },
-  ];
+  const navbarMenus = NAVBAR_MENUS;
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);

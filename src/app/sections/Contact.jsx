@@ -5,6 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { emailTrigger } from "../Jobs/EmailTrigger";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { CONTACT_PAGE } from "@/constants";
 
 const Contact = () => {
   const contactObj = useContext(ContactContext);
@@ -24,13 +25,13 @@ const Contact = () => {
 
   const handleSend = () => {
     if (!formData.name || !formData.email || !formData.description) {
-      toast.error("Please enter all details");
+      toast.error(CONTACT_PAGE.FORM.ERROR_MISSING_DETAILS);
       return;
     }
     
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      toast.error("Please enter a valid email");
+      toast.error(CONTACT_PAGE.FORM.ERROR_INVALID_EMAIL);
       return;
     }
 
@@ -44,13 +45,13 @@ const Contact = () => {
     emailTrigger(messageData)
       .then((status) => {
         if (status) {
-          toast.success("Message sent successfully!");
+          toast.success(CONTACT_PAGE.FORM.SUCCESS_MESSAGE);
           setFormData({ name: "", email: "", description: "" });
         } else {
-          toast.error("Failed to send message.");
+          toast.error(CONTACT_PAGE.FORM.ERROR_SENDING);
         }
       })
-      .catch(() => toast.error("An error occurred."))
+      .catch(() => toast.error(CONTACT_PAGE.FORM.ERROR_GENERAL))
       .finally(() => setLoading(false));
   };
 
@@ -71,7 +72,7 @@ const Contact = () => {
         className="flex flex-col items-center"
       >
         <h2 className="heading-font text-4xl md:text-6xl text-center">
-          GET IN TOUCH
+          {CONTACT_PAGE.HEADING}
         </h2>
         <div className="w-16 md:w-24 h-1 bg-[#6cb545] mt-2 md:mt-4 rounded-full" />
       </motion.div>
@@ -87,10 +88,10 @@ const Contact = () => {
         >
           <div className="space-y-2 md:space-y-4">
             <h3 className="text-2xl md:text-4xl font-bold text-white">
-              Let&apos;s build something <span className="text-[#6cb545]">extraordinary</span> together.
+              {CONTACT_PAGE.SUBHEADING_1}<span className="text-[#6cb545]">{CONTACT_PAGE.SUBHEADING_HIGHLIGHT}</span>{CONTACT_PAGE.SUBHEADING_2}
             </h3>
             <p className="text-white/60 text-sm md:text-lg leading-relaxed max-w-md">
-              Whether you have a question, a project idea, or just want to say hi, my inbox is always open.
+              {CONTACT_PAGE.DESCRIPTION}
             </p>
           </div>
 
@@ -135,38 +136,38 @@ const Contact = () => {
         >
           <form className="flex flex-col gap-3 md:gap-6" onSubmit={(e) => e.preventDefault()}>
             <div className="flex flex-col gap-1 md:gap-2">
-              <label htmlFor="name" className="text-xs md:text-sm font-medium text-white/50 uppercase tracking-widest pl-1">Full Name</label>
+              <label htmlFor="name" className="text-xs md:text-sm font-medium text-white/50 uppercase tracking-widest pl-1">{CONTACT_PAGE.FORM.NAME_LABEL}</label>
               <input
                 type="text"
                 id="name"
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 md:py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[#6cb545] transition-colors text-sm md:text-base"
-                placeholder="John Doe"
+                placeholder={CONTACT_PAGE.FORM.NAME_PLACEHOLDER}
               />
             </div>
             
             <div className="flex flex-col gap-1 md:gap-2">
-              <label htmlFor="email" className="text-xs md:text-sm font-medium text-white/50 uppercase tracking-widest pl-1">Email Address</label>
+              <label htmlFor="email" className="text-xs md:text-sm font-medium text-white/50 uppercase tracking-widest pl-1">{CONTACT_PAGE.FORM.EMAIL_LABEL}</label>
               <input
                 type="email"
                 id="email"
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 md:py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[#6cb545] transition-colors text-sm md:text-base"
-                placeholder="john@example.com"
+                placeholder={CONTACT_PAGE.FORM.EMAIL_PLACEHOLDER}
               />
             </div>
 
             <div className="flex flex-col gap-1 md:gap-2">
-              <label htmlFor="description" className="text-xs md:text-sm font-medium text-white/50 uppercase tracking-widest pl-1">Message</label>
+              <label htmlFor="description" className="text-xs md:text-sm font-medium text-white/50 uppercase tracking-widest pl-1">{CONTACT_PAGE.FORM.MESSAGE_LABEL}</label>
               <textarea
                 id="description"
                 rows={3}
                 value={formData.description}
                 onChange={handleChange}
                 className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 md:py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-[#6cb545] transition-colors resize-none text-sm md:text-base"
-                placeholder="Tell me about your project..."
+                placeholder={CONTACT_PAGE.FORM.MESSAGE_PLACEHOLDER}
               />
             </div>
 
@@ -175,9 +176,9 @@ const Contact = () => {
               disabled={loading}
               className="button-submit w-full py-3 md:py-4 text-sm md:text-lg mt-1 md:mt-2 flex justify-center items-center gap-2 md:gap-3 disabled:opacity-50"
             >
-              {loading ? "Sending..." : (
+              {loading ? CONTACT_PAGE.FORM.SUBMITTING_BUTTON : (
                 <>
-                  Send Message
+                  {CONTACT_PAGE.FORM.SUBMIT_BUTTON}
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
@@ -190,7 +191,7 @@ const Contact = () => {
       </div>
 
       <footer className="text-white/30 text-[10px] md:text-sm font-light">
-        &copy; {new Date().getFullYear()} Made by Syamantak Sarkar. All rights reserved.
+        &copy; {new Date().getFullYear()} {CONTACT_PAGE.FOOTER}
       </footer>
     </section>
   );

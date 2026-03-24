@@ -4,6 +4,7 @@ import "../globals.scss";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
+import { LANDING_PAGE } from "@/constants";
 
 const Landing = () => {
   return (
@@ -23,14 +24,7 @@ const Landing = () => {
           >
             <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] text-6xl md:text-7xl">
               <TypeAnimation
-                sequence={[
-                  "Hi! I am Syamantak",
-                  2000,
-                  "Hi! I am a Full Stack Developer",
-                  2000,
-                  "Hi! I Build Digital Experiences",
-                  2000,
-                ]}
+                sequence={LANDING_PAGE.SEQUENCE}
                 wrapper="div"
                 speed={50}
                 style={{
@@ -48,7 +42,7 @@ const Landing = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="hero-text-bottom overflow-hidden text-white opacity-80 mt-4 text-2xl md:text-3xl font-light tracking-wider"
             >
-              Let&apos;s code your way online
+              {LANDING_PAGE.SUBTITLE}
             </motion.div>
 
             <motion.div 
@@ -61,7 +55,7 @@ const Landing = () => {
                 className="button-submit"
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                View My Work
+                {LANDING_PAGE.CTA_BUTTON}
               </button>
             </motion.div>
           </motion.div>
