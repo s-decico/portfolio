@@ -87,7 +87,7 @@ const Contact = () => {
         >
           <div className="space-y-2 md:space-y-4">
             <h3 className="text-2xl md:text-4xl font-bold text-white">
-              Let's build something <span className="text-[#6cb545]">extraordinary</span> together.
+              Let&apos;s build something <span className="text-[#6cb545]">extraordinary</span> together.
             </h3>
             <p className="text-white/60 text-sm md:text-lg leading-relaxed max-w-md">
               Whether you have a question, a project idea, or just want to say hi, my inbox is always open.

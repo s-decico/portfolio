@@ -48,7 +48,7 @@ const Landing = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="hero-text-bottom overflow-hidden text-white opacity-80 mt-4 text-2xl md:text-3xl font-light tracking-wider"
             >
-              Let's code your way online
+              Let&apos;s code your way online
             </motion.div>
 
             <motion.div 
