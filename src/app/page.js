@@ -76,21 +76,24 @@ export default function Home() {
           <div 
             style={{ 
               position: 'fixed', 
-              top: 0, 
-              left: '1rem', 
-              height: '100vh', 
+              top: isMobile ? 'auto' : 0,
+              bottom: isMobile ? '1rem' : 'auto',
+              left: isMobile ? '0' : '1rem',
+              right: isMobile ? '0' : 'auto',
+              width: isMobile ? '100%' : 'auto',
+              height: isMobile ? 'auto' : '100vh',
               display: 'flex', 
-              flexDirection: 'column',
+              flexDirection: isMobile ? 'row' : 'column',
               justifyContent: 'center',
               zIndex: 100,
               pointerEvents: 'none'
             }}
           >
             <motion.div 
-              initial={{ x: -100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -100, opacity: 0 }}
-              style={{ pointerEvents: 'auto', padding: '0.5rem' }}
+              initial={isMobile ? { y: 100, opacity: 0 } : { x: -100, opacity: 0 }}
+              animate={isMobile ? { y: 0, opacity: 1 } : { x: 0, opacity: 1 }}
+              exit={isMobile ? { y: 100, opacity: 0 } : { x: -100, opacity: 0 }}
+              style={{ pointerEvents: 'auto', padding: '0.5rem', display: 'flex', justifyContent: 'center' }}
             >
               <SideNavbar
                 showSideNavbar={showSideNavbar}
@@ -101,7 +104,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <div className="main-container relative w-full min-w-[360px]">
+      <div className="main-container relative w-full overflow-x-clip">
         {/* Top Navbar: only show when Side Nav is hidden */}
         <AnimatePresence>
           {!showSideNavbar && (

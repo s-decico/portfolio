@@ -24,7 +24,7 @@ const SideNavbar = ({ showSideNavbar, activeSectionId }) => {
   };
 
   return (
-    <div className="glass-morphism flex flex-col items-center py-6 px-3 gap-6 border-white/5 shadow-2xl rounded-2xl">
+    <div className="glass-morphism flex flex-row md:flex-col items-center py-3 px-6 md:py-6 md:px-3 gap-4 md:gap-6 border-white/5 shadow-2xl rounded-full md:rounded-2xl">
       {navbarMenus.map((item) => {
         const isActive = activeSectionId === item.id;
         return (
@@ -44,7 +44,7 @@ const SideNavbar = ({ showSideNavbar, activeSectionId }) => {
             </div>
             
             {/* Tooltip */}
-            <div className="absolute left-16 px-3 py-1 bg-white text-black text-xs font-bold rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 whitespace-nowrap shadow-xl">
+            <div className="hidden md:block absolute left-16 px-3 py-1 bg-white text-black text-xs font-bold rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 whitespace-nowrap shadow-xl">
               {item.label}
               <div className="absolute top-1/2 -left-1 -translate-y-1/2 w-2 h-2 bg-white rotate-45" />
             </div>
@@ -52,7 +52,7 @@ const SideNavbar = ({ showSideNavbar, activeSectionId }) => {
             {isActive && (
               <motion.div
                 layoutId="active-indicator"
-                className="absolute -left-1 top-2 bottom-2 w-1 bg-white rounded-full"
+                className="absolute -bottom-1 left-2 right-2 h-1 md:-left-1 md:top-2 md:bottom-2 md:w-1 md:h-auto bg-white rounded-full"
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               />
             )}

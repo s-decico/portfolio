@@ -6,9 +6,9 @@ import "../globals.scss";
 
 const SPRING_OPTIONS = {
   type: "spring",
-  mass: 1,
-  stiffness: 50,
-  damping: 10,
+  mass: 0.5,
+  stiffness: 300,
+  damping: 30,
 };
 
 export const ExperienceMobile = () => {

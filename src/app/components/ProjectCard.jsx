@@ -34,30 +34,30 @@ const ProjectCard = ({
           scale,
           top: `calc(${i * 20}px)`,
         }}
-        className="project-card group/card glass-morphism w-[90vw] md:w-[80vw] h-[80vh] md:h-[70vh] flex flex-col md:flex-row items-center overflow-hidden border-white/5 shadow-2xl relative"
+        className="project-card group/card glass-morphism w-[95vw] sm:w-[90vw] md:w-[80vw] h-[75vh] md:h-[70vh] flex flex-col md:flex-row items-center overflow-hidden border-white/5 shadow-2xl relative"
       >
-        <div className="p-8 md:p-12 w-full md:w-1/2 flex flex-col gap-6 h-full justify-start overflow-y-auto">
+        <div className="p-5 md:p-12 w-full md:w-1/2 flex flex-col gap-3 md:gap-6 h-[55%] md:h-full justify-start overflow-y-auto shrink-0">
           <div className="flex flex-col gap-2">
-            <span className="text-[#6cb545] font-mono text-sm tracking-widest uppercase">
+            <span className="text-[#6cb545] font-mono text-xs md:text-sm tracking-widest uppercase">
               Project {i + 1}
             </span>
-            <h3 className="card-heading-font text-5xl md:text-6xl text-white">
+            <h3 className="card-heading-font text-3xl md:text-6xl text-white">
               {projectName}
             </h3>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 md:gap-2">
             {projectTechStack.map((tech, index) => (
               <span 
                 key={index} 
-                className="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-white/70"
+                className="bg-white/5 border border-white/10 px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs text-white/70 whitespace-nowrap"
               >
                 {tech}
               </span>
             ))}
           </div>
 
-          <div className="flex flex-col gap-3 text-white/70 text-base md:text-lg">
+          <div className="flex flex-col gap-2 md:gap-3 text-white/70 text-[11px] md:text-lg">
             {projectDescription.map((item, idx) => (
               <div key={idx} className="flex gap-2">
                 <span className="text-[#6cb545] mt-1">•</span>
@@ -68,7 +68,7 @@ const ProjectCard = ({
 
         </div>
 
-        <div className="w-full md:w-1/2 h-full overflow-hidden bg-black/20 relative">
+        <div className="w-full md:w-1/2 h-[45%] md:h-full overflow-hidden bg-black/20 relative shrink-0">
           <motion.div 
             className="w-full h-full" 
             style={{ scale: imageScale }}

@@ -22,7 +22,7 @@
 }
 
 body {
-  min-width: 360px;
+  width: 100%;
   background-color: var(--bg-dark);
   color: var(--text-primary);
   overflow-x: hidden;
@@ -89,7 +89,10 @@ body {
   border: 1px solid var(--primary);
   background: transparent;
   color: var(--primary);
-  padding: 0.75rem 2rem;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: 600;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 8px;
@@ -148,8 +151,8 @@ body {
   .landing-hero {
     flex-direction: column-reverse;
     height: auto;
-    padding-top: 120px;
-    gap: 40px;
+    padding-top: 80px;
+    gap: 30px;
   }
 
   .hero-text {
@@ -179,22 +182,5 @@ body {
     top: 0 !important;
     height: auto !important;
     margin-bottom: 40px;
-  }
-
-  .project-card {
-    width: 100% !important;
-    height: auto !important;
-    flex-direction: column !important;
-    padding: 20px !important;
-  }
-
-  .project-details {
-    width: 100% !important;
-  }
-
-  .project-image {
-    width: 100% !important;
-    height: 250px !important;
-    margin-top: 20px;
   }
 }

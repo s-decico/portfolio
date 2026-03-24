@@ -27,11 +27,11 @@ const ExperienceCard = ({ experience }) => {
           </p>
         </div>
         {companylogo && (
-          <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-xl p-3 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-500">
+          <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform duration-500 shadow-inner">
             <img 
               src={companylogo} 
               alt={companyname} 
-              className="w-full h-full object-contain filter brightness-110"
+              className="w-full h-full object-cover"
             />
           </div>
         )}

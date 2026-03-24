@@ -11,12 +11,12 @@ const ExperienceMobileCard = ({ experience }) => {
 
   return (
     <div className="flex flex-col items-center w-full text-white">
-      <div className="w-24 h-24 rounded-2xl overflow-hidden bg-white/10 p-2 mb-6 shadow-lg">
-        {companylogo && <img src={companylogo} alt={companyname} className="w-full h-full object-contain" />}
+      <div className="w-16 h-16 rounded-2xl overflow-hidden bg-white mb-4 shadow-lg flex items-center justify-center">
+        {companylogo && <img src={companylogo} alt={companyname} className="w-full h-full object-cover" />}
       </div>
       
-      <h3 className="card-heading-font text-3xl text-center mb-2">{companyname}</h3>
-      <p className="text-[#6cb545] text-lg font-medium text-center mb-1">{designation}</p>
+      <h3 className="card-heading-font text-2xl text-center mb-1">{companyname}</h3>
+      <p className="text-[#6cb545] text-base font-medium text-center mb-1">{designation}</p>
       <p className="text-white/40 text-sm mb-8">{formatDate(from)} — {formatDate(to)}</p>
 
       <div className="flex flex-wrap justify-center gap-4 w-full">

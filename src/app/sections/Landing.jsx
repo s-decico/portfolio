@@ -9,7 +9,7 @@ import { LANDING_PAGE } from "@/constants";
 const Landing = () => {
   return (
     <>
-      <div className="landing-container w-full h-dvh relative flex flex-col justify-center items-center overflow-hidden">
+      <div className="landing-container w-full h-dvh relative flex flex-col justify-center items-center overflow-hidden pb-[80px] md:pb-0">
         {/* Animated Background Blobs */}
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#6cb545] opacity-20 blur-[120px] rounded-full animate-pulse" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#6cb545] opacity-10 blur-[120px] rounded-full animate-pulse" />
@@ -22,7 +22,7 @@ const Landing = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="hero-text flex flex-col"
           >
-            <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] text-6xl md:text-7xl">
+            <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] text-4xl sm:text-5xl md:text-7xl">
               <TypeAnimation
                 sequence={LANDING_PAGE.SEQUENCE}
                 wrapper="div"
@@ -40,7 +40,7 @@ const Landing = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="hero-text-bottom overflow-hidden text-white opacity-80 mt-4 text-2xl md:text-3xl font-light tracking-wider"
+              className="hero-text-bottom overflow-hidden text-white opacity-80 mt-2 md:mt-4 text-lg sm:text-2xl md:text-3xl font-light tracking-wider"
             >
               {LANDING_PAGE.SUBTITLE}
             </motion.div>
@@ -49,10 +49,10 @@ const Landing = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
-              className="mt-10"
+              className="mt-6 md:mt-10"
             >
               <button 
-                className="button-submit"
+                className="button-submit w-[80vw] sm:w-[50vw] md:w-auto text-base"
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 {LANDING_PAGE.CTA_BUTTON}

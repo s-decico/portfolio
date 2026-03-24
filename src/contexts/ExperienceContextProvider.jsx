@@ -33,7 +33,7 @@ const ExperienceContextProvider = ({ children }) => {
       from: "Dec-2024",
       to: "Present",
       companylogo:
-        "https://cdn.worldvectorlogo.com/logos/infosys.svg",
+        "/infosys.jpg",
       details: [
         "Collaborated with UI/UX and Product teams to launch new features and optimize application performance.",
         "Engineered an OAuth 2.0 system with test-user mapping, enhancing audit traceability and developer security.",
@@ -72,7 +72,7 @@ const ExperienceContextProvider = ({ children }) => {
       from: "Oct-2023",
       to: "Dec-2023",
       companylogo:
-        "https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Cognizant.svg",
+        "/cognizant.png",
       details: [
         "Reduced react app load time by 40% by implementing lazy loading and memoization(caching)",
         "Integrated OAuth for better security and enhance user experience and increase signup rates by 40%",
@@ -113,7 +113,7 @@ const ExperienceContextProvider = ({ children }) => {
       from: "Aug-2022",
       to: "Aug-2023",
       companylogo:
-        "https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Cognizant.svg",
+        "/cognizant.png",
       details: [
         "Delivered Azure Webjob to automate user task saving $5000/month",
         "Implemented middlewares to increase security and handle business logics",
@@ -139,7 +139,7 @@ const ExperienceContextProvider = ({ children }) => {
       from: "Aug-2021",
       to: "Aug-2022",
       companylogo:
-        "https://upload.wikimedia.org/wikipedia/commons/5/5a/Logo_Cognizant.png",
+        "/cognizant.png",
 
       details: [
         "Developed and maintained UI components using React.js, resulting in improved user experience and enhanced interactivity",
