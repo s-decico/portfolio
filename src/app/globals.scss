@@ -73,6 +73,27 @@ body {
   overflow: hidden;
 }
 
+.hero-text-top {
+  min-height: 100px;
+  /* Stable height for desktop text-7xl */
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-text-top {
+    min-height: 110px;
+    /* Stable height for sm:text-5xl */
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .hero-text-top {
+    min-height: 120px;
+    /* Stable height for mobile text-4xl */
+  }
+}
+
 .landing-container::before {
   content: "";
   position: absolute;

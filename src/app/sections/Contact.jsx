@@ -60,7 +60,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative w-full h-[100dvh] pt-12 md:pt-16 pb-4 px-6 overflow-hidden flex flex-col items-center">
+    <section id="contact" className="relative w-full min-h-screen md:h-[100dvh] pt-12 md:pt-16 pb-24 md:pb-4 px-6 overflow-y-auto md:overflow-hidden flex flex-col items-center">
       {/* Background blobs */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#6cb545] opacity-5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#6cb545] opacity-5 blur-[120px] rounded-full pointer-events-none" />

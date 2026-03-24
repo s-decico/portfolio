@@ -9,7 +9,7 @@ import { LANDING_PAGE } from "@/constants";
 const Landing = () => {
   return (
     <>
-      <div className="landing-container w-full h-dvh relative flex flex-col justify-center items-center overflow-hidden pb-[80px] md:pb-0">
+      <div className="landing-container w-full h-dvh relative flex flex-col justify-center items-center overflow-hidden pb-[110px] md:pb-0">
         {/* Animated Background Blobs */}
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#6cb545] opacity-20 blur-[120px] rounded-full animate-pulse" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#6cb545] opacity-10 blur-[120px] rounded-full animate-pulse" />
@@ -22,7 +22,7 @@ const Landing = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="hero-text flex flex-col"
           >
-            <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] text-4xl sm:text-5xl md:text-7xl">
+            <div className="hero-text-top overflow-hidden p-0 text-[#6cb545] text-4xl sm:text-5xl md:text-7xl flex items-center">
               <TypeAnimation
                 sequence={LANDING_PAGE.SEQUENCE}
                 wrapper="div"
@@ -82,7 +82,7 @@ const Landing = () => {
         <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="scroll-icon absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer z-10"
+          className="scroll-icon absolute bottom-[40px] md:bottom-10 left-0 right-0 mx-auto w-fit flex justify-center cursor-pointer z-10"
           onClick={() => {
             document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
           }}
